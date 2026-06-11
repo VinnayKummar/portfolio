@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Polish — Music Matching App · Vinay Kumar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ─── RESET ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #0a0a12;
+  --surface:    #12121e;
+  --surface2:   #1a1a2e;
+  --text:       #f0ede6;
+  --text-muted: #8b8ba0;
+  --text-dim:   #5a5a72;
+  --grad-from:  #7c3aed;
+  --grad-to:    #ec4899;
+  --accent:     #a855f7;
+  --accent-dim: rgba(168,85,247,0.12);
+  --border:     rgba(240,237,230,0.07);
+  --border-acc: rgba(168,85,247,0.25);
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+  --ease:         cubic-bezier(0.16, 1, 0.3, 1);
+  --grad: linear-gradient(135deg, var(--grad-from), var(--grad-to));
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* gradient text utility */
+.grad-text {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 900;
+  padding: 18px 6vw;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(10,10,18,0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--accent); }
+.nav-back svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.nav-title {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+.nav-links-right { display: flex; gap: 24px; }
+.nav-links-right a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  transition: color 0.2s;
+}
+.nav-links-right a:hover { color: var(--text); }
+
+/* ─── HERO ─── */
+.cs-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 6vw 80px;
+  position: relative;
+  overflow: hidden;
+}
+.cs-hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 60% 20%, rgba(124,58,237,0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 80% 70%, rgba(236,72,153,0.12) 0%, transparent 60%),
+    radial-gradient(circle, rgba(240,237,230,0.05) 1px, transparent 1px);
+  background-size: auto, auto, 28px 28px;
+}
+.cs-hero-tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 10px;
+}
+.cs-hero-tag::before {
+  content: '';
+  display: inline-block;
+  width: 32px; height: 1px;
+  background: var(--grad);
+}
+.cs-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 10vw, 130px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  margin-bottom: 32px;
+}
+.cs-hero-subtitle {
+  font-size: clamp(16px, 1.8vw, 20px);
+  color: var(--text-muted);
+  max-width: 620px;
+  line-height: 1.65;
+  margin-bottom: 36px;
+}
+.cs-hero-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+.cs-tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  padding: 6px 16px;
+  border-radius: 100px;
+  border: 1px solid var(--border-acc);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+/* ─── LAYOUT ─── */
+.cs-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 6vw;
+}
+.cs-container-wide {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 6vw;
+}
+.cs-section {
+  padding: 100px 0;
+  border-top: 1px solid var(--border);
+}
+.cs-section:first-child { border-top: none; }
+
+.cs-section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.cs-section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 40px;
+}
+.cs-body {
+  font-size: 17px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 680px;
+}
+.cs-body + .cs-body { margin-top: 20px; }
+.cs-body strong { color: var(--text); font-weight: 500; }
+
+/* ─── OVERVIEW META ─── */
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  margin-top: 56px;
+}
+.overview-cell {
+  background: var(--surface);
+  padding: 28px 32px;
+}
+.overview-cell:first-child { border-radius: 12px 0 0 12px; }
+.overview-cell:last-child  { border-radius: 0 12px 12px 0; }
+.overview-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.overview-value {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ─── SCREENSHOT PLACEHOLDER ─── */
+.screenshot-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 56px 0;
+  position: relative;
+}
+.screenshot-bar {
+  background: var(--surface2);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.screenshot-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+}
+.screenshot-dot:nth-child(1) { background: #ff5f57; }
+.screenshot-dot:nth-child(2) { background: #febc2e; }
+.screenshot-dot:nth-child(3) { background: #28c840; }
+.screenshot-url {
+  flex: 1;
+  margin-left: 8px;
+  background: var(--bg);
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+}
+.screenshot-inner {
+  padding: 48px 32px;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.screenshot-inner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(124,58,237,0.08) 0%, transparent 70%);
+}
+.screenshot-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+}
+.screenshot-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* screenshot with actual image */
+.screenshot-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ─── TECH STACK ─── */
+.stack-group { margin-bottom: 40px; }
+.stack-group:last-child { margin-bottom: 0; }
+.stack-group-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.stack-group-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.stack-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+.stack-pill {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 8px 18px;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  cursor: default;
+}
+.stack-pill:hover {
+  border-color: var(--border-acc);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+.stack-pill.highlight {
+  border-color: var(--border-acc);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+/* ─── FEATURES ─── */
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 8px;
+}
+.feature-card {
+  background: var(--surface);
+  padding: 36px;
+  transition: background 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--grad);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.feature-card:hover { background: var(--surface2); }
+.feature-card:hover::before { opacity: 1; }
+.feature-card:nth-child(1) { border-radius: 12px 0 0 0; }
+.feature-card:nth-child(2) { border-radius: 0 12px 0 0; }
+.feature-card:nth-child(3) { border-radius: 0; }
+.feature-card:nth-child(4) { border-radius: 0; }
+.feature-card:nth-child(5) { border-radius: 0 0 0 12px; grid-column: span 2; }
+.feature-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+}
+.feature-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+  transition: color 0.2s;
+}
+.feature-card:hover .feature-title { color: var(--accent); }
+.feature-body {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+/* ─── CHALLENGES ─── */
+.challenges-list { display: flex; flex-direction: column; gap: 2px; margin-top: 8px; }
+.challenge-card {
+  background: var(--surface);
+  border-radius: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.challenge-card:first-child { border-radius: 12px 12px 0 0; }
+.challenge-card:last-child  { border-radius: 0 0 12px 12px; }
+.challenge-col {
+  padding: 36px 40px;
+  position: relative;
+}
+.challenge-problem {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+.challenge-solution {
+  background: var(--surface2);
+}
+.challenge-col-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.challenge-problem .challenge-col-label { color: #f87171; }
+.challenge-solution .challenge-col-label { color: #4ade80; }
+.challenge-col-label .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.challenge-problem .dot  { background: #f87171; }
+.challenge-solution .dot { background: #4ade80; }
+.challenge-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+.challenge-body {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+/* ─── OUTCOMES ─── */
+.outcomes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 8px;
+}
+.outcome-item {
+  background: var(--surface);
+  padding: 24px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  transition: background 0.2s;
+}
+.outcome-item:first-child { border-radius: 12px 12px 0 0; }
+.outcome-item:last-child  { border-radius: 0 0 12px 12px; }
+.outcome-item:hover { background: var(--surface2); }
+.outcome-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  min-width: 28px;
+  padding-top: 3px;
+}
+.outcome-text {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.outcome-text strong { color: var(--text); font-weight: 500; }
+
+/* ─── REFLECTION ─── */
+.reflection-block {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 56px;
+  border: 1px solid var(--border-acc);
+  position: relative;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.reflection-block::before {
+  content: '"';
+  font-family: var(--font-display);
+  font-size: 200px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--border-acc);
+  position: absolute;
+  top: -20px; left: 32px;
+  pointer-events: none;
+}
+.reflection-text {
+  font-family: var(--font-display);
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 700px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 24px;
+}
+.reflection-text + .reflection-text { margin-top: 20px; }
+.reflection-text em {
+  font-style: normal;
+  color: var(--text);
+}
+
+/* ─── DIVIDER ─── */
+.cs-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-acc), transparent);
+  margin: 0;
+}
+
+/* ─── FOOTER ─── */
+.cs-footer {
+  padding: 60px 6vw;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.cs-footer-text {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.cs-footer-links { display: flex; gap: 24px; }
+.cs-footer-links a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+.cs-footer-links a:hover { color: var(--accent); }
+
+/* ─── SCROLL REVEAL ─── */
+.reveal { opacity: 0; transform: translateY(40px); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .cs-section { padding: 72px 0; }
+  .overview-grid { grid-template-columns: 1fr; }
+  .overview-cell { border-radius: 0 !important; }
+  .overview-cell:first-child { border-radius: 12px 12px 0 0 !important; }
+  .overview-cell:last-child  { border-radius: 0 0 12px 12px !important; }
+  .features-grid { grid-template-columns: 1fr; }
+  .feature-card { border-radius: 0 !important; }
+  .feature-card:nth-child(5) { grid-column: span 1; }
+  .challenge-card { grid-template-columns: 1fr; }
+  .challenge-problem { border-right: none; border-bottom: 1px solid var(--border); }
+  .reflection-block { padding: 36px 28px; }
+  .reflection-block::before { font-size: 120px; }
+  .nav-title, .nav-links-right { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="./index.html" class="nav-back">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to Portfolio
+  </a>
+  <span class="nav-title">Polish — Case Study</span>
+  <div class="nav-links-right">
+    <a href="https://github.com/VinnayKummar/polish" target="_blank" rel="noopener">GitHub ↗</a>
+    <a href="./index.html#work">All Work</a>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<header class="cs-hero">
+  <div class="cs-hero-bg"></div>
+  <div style="position:relative; z-index:1;">
+    <p class="cs-hero-tag">Case Study · 2024</p>
+    <h1 class="cs-hero-title grad-text">Polish</h1>
+    <p class="cs-hero-subtitle">
+      A real-time music matching web application that connects strangers who are listening to the same song at the same moment.
+    </p>
+    <div class="cs-hero-tags">
+      <span class="cs-tag">Full Stack</span>
+      <span class="cs-tag">Real-Time</span>
+      <span class="cs-tag">FastAPI</span>
+      <span class="cs-tag">JavaScript</span>
+      <span class="cs-tag">SQLite</span>
+    </div>
+    <div style="margin-top:36px; display:flex; gap:14px; flex-wrap:wrap;">
+      <a href="https://music-polish.onrender.com/" target="_blank" rel="noopener" class="hero-cta-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        Live Demo
+      </a>
+      <a href="https://github.com/vinaykumarchakali/music-polish" target="_blank" rel="noopener" class="hero-cta-btn hero-cta-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+.hero-cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 26px;
+  background: var(--grad);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 14px; font-weight: 600;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.35);
+}
+.hero-cta-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.hero-cta-outline {
+  background: transparent;
+  border: 1px solid var(--border-acc);
+  color: var(--text-muted);
+  box-shadow: none;
+}
+.hero-cta-outline:hover { border-color: var(--accent); color: var(--text); }
+</style>
+
+<!-- ─── OVERVIEW ─── -->
+<div style="background: var(--surface); padding: 80px 0;">
+  <div class="cs-container-wide">
+
+    <!-- Screenshot 1 — real dashboard -->
+    <div class="screenshot-block reveal">
+      <div class="screenshot-bar">
+        <div class="screenshot-dot"></div>
+        <div class="screenshot-dot"></div>
+        <div class="screenshot-dot"></div>
+        <div class="screenshot-url">music-polish.onrender.com — Polish · Music Matching</div>
+      </div>
+      <img src="./shots/Dashbord.png" class="screenshot-img" alt="Polish app main dashboard — library and Now Playing panel" loading="lazy"/>
+    </div>
+
+    <!-- Meta row -->
+    <div class="overview-grid reveal">
+      <div class="overview-cell">
+        <p class="overview-label">Role</p>
+        <p class="overview-value">Full Stack Developer</p>
+      </div>
+      <div class="overview-cell">
+        <p class="overview-label">Timeline</p>
+        <p class="overview-value">6 Weeks</p>
+      </div>
+      <div class="overview-cell">
+        <p class="overview-label">Stack</p>
+        <p class="overview-value">Python · FastAPI · JS · SQLite · WebSocket · JWT</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── PROBLEM ─── -->
+<section class="cs-section">
+  <div class="cs-container">
+    <p class="cs-section-label reveal">01 — Problem</p>
+    <h2 class="cs-section-heading reveal">The Problem</h2>
+    <p class="cs-body reveal">
+      Music is one of the most powerful ways humans connect — but today we listen alone.
+      Millions of people play the same song at the same moment, in the same city, without ever knowing each other exists.
+      Existing music apps like Spotify have social features, but none tell you
+      <strong>"this stranger 2km away is listening to exactly what you're listening to, right now."</strong>
+    </p>
+    <p class="cs-body reveal" style="margin-top:20px;">
+      The question was: <strong>Can we build a system that detects this real-time musical overlap and creates a moment of connection?</strong>
+    </p>
+
+    <!-- Stat callouts -->
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:56px;" class="reveal">
+      <div style="background:var(--surface); padding:32px; border-radius:12px 0 0 12px; text-align:center;">
+        <p style="font-family:var(--font-display); font-size:clamp(36px,5vw,56px); font-weight:700; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; letter-spacing:-0.03em;">∞</p>
+        <p style="font-family:var(--font-mono); font-size:12px; color:var(--text-dim); letter-spacing:0.1em; margin-top:8px;">SIMULTANEOUS LISTENERS</p>
+      </div>
+      <div style="background:var(--surface); padding:32px; text-align:center;">
+        <p style="font-family:var(--font-display); font-size:clamp(36px,5vw,56px); font-weight:700; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; letter-spacing:-0.03em;">0</p>
+        <p style="font-family:var(--font-mono); font-size:12px; color:var(--text-dim); letter-spacing:0.1em; margin-top:8px;">APPS THAT CONNECT THEM</p>
+      </div>
+      <div style="background:var(--surface); padding:32px; border-radius:0 12px 12px 0; text-align:center;">
+        <p style="font-family:var(--font-display); font-size:clamp(36px,5vw,56px); font-weight:700; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; letter-spacing:-0.03em;">Now</p>
+        <p style="font-family:var(--font-mono); font-size:12px; color:var(--text-dim); letter-spacing:0.1em; margin-top:8px;">POLISH CHANGES THAT</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SOLUTION ─── -->
+<div class="cs-divider"></div>
+<section class="cs-section">
+  <div class="cs-container">
+    <p class="cs-section-label reveal">02 — Solution</p>
+    <h2 class="cs-section-heading reveal">The Solution</h2>
+    <p class="cs-body reveal">Polish is a full-stack web application that:</p>
+    <ul style="margin-top:24px; display:flex; flex-direction:column; gap:14px;" class="reveal">
+      <li style="display:flex; align-items:flex-start; gap:14px;">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--grad-from);flex-shrink:0;margin-top:8px;box-shadow:0 0 8px var(--grad-from);"></span>
+        <span style="font-size:16px; color:var(--text-muted);">Tracks what song each logged-in user is playing <strong style="color:var(--text);">in real time</strong></span>
+      </li>
+      <li style="display:flex; align-items:flex-start; gap:14px;">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:8px;box-shadow:0 0 8px var(--accent);"></span>
+        <span style="font-size:16px; color:var(--text-muted);">Uses the browser's <strong style="color:var(--text);">Geolocation API</strong> to log GPS coordinates</span>
+      </li>
+      <li style="display:flex; align-items:flex-start; gap:14px;">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--grad-to);flex-shrink:0;margin-top:8px;box-shadow:0 0 8px var(--grad-to);"></span>
+        <span style="font-size:16px; color:var(--text-muted);">Matches users playing the same song within a <strong style="color:var(--text);">30-second active window</strong></span>
+      </li>
+      <li style="display:flex; align-items:flex-start; gap:14px;">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--grad-from);flex-shrink:0;margin-top:8px;box-shadow:0 0 8px var(--grad-from);"></span>
+        <span style="font-size:16px; color:var(--text-muted);">Shows matched users in a <strong style="color:var(--text);">"Listening Nearby"</strong> panel with their location</span>
+      </li>
+      <li style="display:flex; align-items:flex-start; gap:14px;">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:8px;box-shadow:0 0 8px var(--accent);"></span>
+        <span style="font-size:16px; color:var(--text-muted);">Lets matched users open a <strong style="color:var(--text);">live chat</strong> with typing indicators and message history</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Screenshot 2 -->
+  <div class="cs-container-wide" style="margin-top:0;">
+    <div class="screenshot-block reveal" style="max-width:680px; margin:0 auto;">
+      <div class="screenshot-bar">
+        <div class="screenshot-dot"></div>
+        <div class="screenshot-dot"></div>
+        <div class="screenshot-dot"></div>
+        <div class="screenshot-url">music-polish.onrender.com — Polish · Sign In</div>
+      </div>
+      <img src="./shots/loginpage.png" class="screenshot-img" alt="Polish app login screen" loading="lazy"/>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRY IT ─── -->
+<div class="cs-divider"></div>
+<section class="cs-section">
+  <div class="cs-container">
+    <p class="cs-section-label reveal">03 — Live Demo</p>
+    <h2 class="cs-section-heading reveal">Try It Yourself</h2>
+    <p class="cs-body reveal">
+      The app is live on Render. To experience the music-matching feature, open it in <strong>two different browser tabs</strong> (or share the link with a friend) and log in with different accounts — then both play the same song to see the match happen in real time.
+    </p>
+
+    <div class="try-it-grid reveal">
+      <div class="try-step">
+        <span class="try-num">01</span>
+        <div>
+          <p class="try-title">Open the app</p>
+          <a href="https://music-polish.onrender.com/" target="_blank" rel="noopener" class="try-link">music-polish.onrender.com ↗</a>
+          <p class="try-desc">May take ~30s to wake up on Render's free tier.</p>
+        </div>
+      </div>
+      <div class="try-step">
+        <span class="try-num">02</span>
+        <div>
+          <p class="try-title">Create accounts</p>
+          <p class="try-desc">Click <strong>Create account</strong> — just pick any username + password. No email needed. Do this in Tab A and Tab B with different usernames.</p>
+        </div>
+      </div>
+      <div class="try-step">
+        <span class="try-num">03</span>
+        <div>
+          <p class="try-title">Play the same song</p>
+          <p class="try-desc">In both tabs, click the same song from <em>Your Library</em>. The app detects the overlap and shows a match notification.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Now playing screenshot -->
+    <div class="screenshot-block reveal" style="margin-top:48px;">
+      <div class="screenshot-bar">
+        <div class="screenshot-dot"></div>
+        <div class="screenshot-dot"></div>
+        <div class="screenshot-dot"></div>
+        <div class="screenshot-url">music-polish.onrender.com — Now Playing</div>
+      </div>
+      <img src="./shots/musicplaying.png" class="screenshot-img" alt="Polish app now playing state — song selected with pause button" loading="lazy"/>
+    </div>
+  </div>
+</section>
+
+<style>
+.try-it-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+}
+.try-step {
+  background: var(--surface);
+  padding: 32px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.try-step:first-child { border-radius: 12px 0 0 12px; }
+.try-step:last-child  { border-radius: 0 12px 12px 0; }
+.try-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  padding-top: 3px;
+  min-width: 24px;
+}
+.try-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.try-link {
+  display: inline-block;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  margin-bottom: 8px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.try-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+@media (max-width: 768px) {
+  .try-it-grid { grid-template-columns: 1fr; }
+  .try-step:first-child { border-radius: 12px 12px 0 0; }
+  .try-step:last-child  { border-radius: 0 0 12px 12px; }
+}
+</style>
+
+<!-- ─── TECH STACK ─── -->
+<div class="cs-divider"></div>
+<section class="cs-section" style="background:var(--surface);">
+  <div class="cs-container">
+    <p class="cs-section-label reveal">04 — Tech Stack</p>
+    <h2 class="cs-section-heading reveal">Tech Stack</h2>
+
+    <div class="stack-group reveal">
+      <p class="stack-group-label">Backend</p>
+      <div class="stack-pills">
+        <span class="stack-pill highlight">Python</span>
+        <span class="stack-pill highlight">FastAPI</span>
+        <span class="stack-pill">SQLAlchemy ORM</span>
+        <span class="stack-pill">SQLite</span>
+        <span class="stack-pill">bcrypt</span>
+        <span class="stack-pill">JWT (PyJWT)</span>
+      </div>
+    </div>
+
+    <div class="stack-group reveal">
+      <p class="stack-group-label">Frontend</p>
+      <div class="stack-pills">
+        <span class="stack-pill highlight">JavaScript (Vanilla)</span>
+        <span class="stack-pill">HTML5</span>
+        <span class="stack-pill">CSS3</span>
+      </div>
+    </div>
+
+    <div class="stack-group reveal">
+      <p class="stack-group-label">Infrastructure & APIs</p>
+      <div class="stack-pills">
+        <span class="stack-pill highlight">WebSocket</span>
+        <span class="stack-pill">Geolocation API</span>
+        <span class="stack-pill">Nominatim API</span>
+        <span class="stack-pill">Polling (3s interval)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FEATURES ─── -->
+<div class="cs-divider"></div>
+<section class="cs-section">
+  <div class="cs-container-wide">
+    <div class="cs-container" style="padding:0;">
+      <p class="cs-section-label reveal">05 — Features</p>
+      <h2 class="cs-section-heading reveal">Key Features</h2>
+    </div>
+
+    <div class="features-grid reveal">
+
+      <div class="feature-card">
+        <p class="feature-num">01</p>
+        <h3 class="feature-title">Real-Time Music Matching</h3>
+        <p class="feature-body">Every 3 seconds, the app logs the user's current song + GPS coordinates to the backend. The server checks for other active users playing the same song in the last 30 seconds. If found, a "Listening Nearby" panel appears instantly — no page refresh needed.</p>
+      </div>
+
+      <div class="feature-card">
+        <p class="feature-num">02</p>
+        <h3 class="feature-title">Secure Authentication</h3>
+        <p class="feature-body">Users sign up and log in with bcrypt-hashed passwords. The server issues a JWT token on login. Every protected API call sends this token in the request header — no sessions, no cookies.</p>
+      </div>
+
+      <div class="feature-card">
+        <p class="feature-num">03</p>
+        <h3 class="feature-title">Live Chat with Typing Indicators</h3>
+        <p class="feature-body">When two users match, they can open a direct chat panel. Chat history is stored in SQLite and loaded via REST. Typing indicators (animated bouncing dots) and live text preview are powered by WebSocket — the other person sees your text appearing character by character before you hit send.</p>
+      </div>
+
+      <div class="feature-card">
+        <p class="feature-num">04</p>
+        <h3 class="feature-title">Geolocation Integration</h3>
+        <p class="feature-body">The browser's native Geolocation API sends real coordinates. These are reverse-geocoded using the Nominatim API to show human-readable city names. If GPS is unavailable, the app defaults to 0,0 and matching still works by song name alone.</p>
+      </div>
+
+      <div class="feature-card">
+        <p class="feature-num">05</p>
+        <h3 class="feature-title">Responsive Dark UI — Built From Scratch</h3>
+        <p class="feature-body">Built with no UI libraries. Dark ambient theme with vinyl disc animation, per-song gradient colours, glassmorphism cards, and smooth CSS animations throughout. Every component is hand-coded, every pixel intentional.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CHALLENGES ─── -->
+<div class="cs-divider"></div>
+<section class="cs-section" style="background: var(--surface);">
+  <div class="cs-container-wide">
+    <div class="cs-container" style="padding:0;">
+      <p class="cs-section-label reveal">06 — Engineering</p>
+      <h2 class="cs-section-heading reveal">Challenges &amp; How I Solved Them</h2>
+    </div>
+
+    <div class="challenges-list reveal">
+
+      <div class="challenge-card">
+        <div class="challenge-col challenge-problem">
+          <p class="challenge-col-label"><span class="dot"></span>Challenge</p>
+          <h3 class="challenge-title">Ghost Users</h3>
+          <p class="challenge-body">Old users remained "active" in the database even after closing the browser, polluting match results with stale data that never expired.</p>
+        </div>
+        <div class="challenge-col challenge-solution">
+          <p class="challenge-col-label"><span class="dot"></span>Solution</p>
+          <h3 class="challenge-title">Timestamp-Based Expiry</h3>
+          <p class="challenge-body">Added a <code style="font-family:var(--font-mono);font-size:12px;color:var(--accent);background:var(--accent-dim);padding:2px 6px;border-radius:4px;">last_active</code> timestamp to every log request. The match query now filters to only users active in the last 30 seconds. Any user who closes the app disappears automatically within 30 seconds.</p>
+        </div>
+      </div>
+
+      <div class="challenge-card">
+        <div class="challenge-col challenge-problem">
+          <p class="challenge-col-label"><span class="dot"></span>Challenge</p>
+          <h3 class="challenge-title">Blank Page Bug</h3>
+          <p class="challenge-body">After a UI redesign, the entire app section was invisible after login. Hours of CSS debugging found absolutely nothing wrong.</p>
+        </div>
+        <div class="challenge-col challenge-solution">
+          <p class="challenge-col-label"><span class="dot"></span>Solution</p>
+          <h3 class="challenge-title">One Wrong HTML Tag</h3>
+          <p class="challenge-body">A single typo — <code style="font-family:var(--font-mono);font-size:12px;color:var(--accent);background:var(--accent-dim);padding:2px 6px;border-radius:4px;">&lt;/auth-section&gt;</code> instead of <code style="font-family:var(--font-mono);font-size:12px;color:var(--accent);background:var(--accent-dim);padding:2px 6px;border-radius:4px;">&lt;/div&gt;</code> — caused the browser to nest the entire app inside the auth section. Fixed with one character change.</p>
+        </div>
+      </div>
+
+      <div class="challenge-card">
+        <div class="challenge-col challenge-problem">
+          <p class="challenge-col-label"><span class="dot"></span>Challenge</p>
+          <h3 class="challenge-title">Chat Ordering Race Condition</h3>
+          <p class="challenge-body">New messages occasionally appeared before older ones because the DOM was being fully cleared and rebuilt on every poll cycle.</p>
+        </div>
+        <div class="challenge-col challenge-solution">
+          <p class="challenge-col-label"><span class="dot"></span>Solution</p>
+          <h3 class="challenge-title">Incremental DOM Updates</h3>
+          <p class="challenge-body">Tracked the previous message count and only applied the slide-in animation to genuinely new messages. Preserved scroll position if the user had scrolled up to read history.</p>
+        </div>
+      </div>
+
+      <div class="challenge-card">
+        <div class="challenge-col challenge-problem">
+          <p class="challenge-col-label"><span class="dot"></span>Challenge</p>
+          <h3 class="challenge-title">Real-Time vs REST Trade-off</h3>
+          <p class="challenge-body">The initial architecture used pure HTTP polling for everything — slow and inefficient for typing indicators which needed sub-second latency.</p>
+        </div>
+        <div class="challenge-col challenge-solution">
+          <p class="challenge-col-label"><span class="dot"></span>Solution</p>
+          <h3 class="challenge-title">Hybrid Architecture</h3>
+          <p class="challenge-body">Kept REST for persistent messages (stored in DB) and added a WebSocket layer exclusively for ephemeral events like typing and live text preview. Best of both worlds — durability where it matters, speed where it counts.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── OUTCOMES ─── -->
+<div class="cs-divider"></div>
+<section class="cs-section">
+  <div class="cs-container">
+    <p class="cs-section-label reveal">07 — Results</p>
+    <h2 class="cs-section-heading reveal">Outcomes</h2>
+
+    <div class="outcomes-list reveal">
+      <div class="outcome-item">
+        <span class="outcome-num">01</span>
+        <p class="outcome-text">Built a <strong>complete full-stack application end-to-end independently</strong> — from database schema to responsive UI.</p>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-num">02</span>
+        <p class="outcome-text">Implemented <strong>JWT authentication, bcrypt hashing, REST API, WebSocket, and geolocation</strong> — all from scratch, no starter templates.</p>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-num">03</span>
+        <p class="outcome-text">Wrote <strong>10 unit tests</strong> covering all critical backend endpoints with pytest.</p>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-num">04</span>
+        <p class="outcome-text">Designed a <strong>fully responsive UI</strong> with custom animations and zero UI framework dependency.</p>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-num">05</span>
+        <p class="outcome-text">Resolved <strong>4 non-trivial technical bugs</strong> through systematic debugging — HTML nesting, race conditions, ghost users, polling inefficiency.</p>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-num">06</span>
+        <p class="outcome-text">Gained hands-on experience with <strong>real-time systems architecture</strong> and meaningful trade-off decisions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── REFLECTION ─── -->
+<div class="cs-divider"></div>
+<section class="cs-section" style="background: var(--surface);">
+  <div class="cs-container">
+    <p class="cs-section-label reveal">08 — Reflection</p>
+    <h2 class="cs-section-heading reveal">What I Learned</h2>
+
+    <div class="reflection-block reveal">
+      <p class="reflection-text">
+        This project taught me that <em>the most dangerous bugs are not in the logic — they are in the assumptions.</em>
+        I spent hours debugging CSS when the real problem was one wrong HTML closing tag.
+      </p>
+      <p class="reflection-text">
+        I also learned the difference between building a feature that works in theory and building one that works in reality —
+        the ghost users bug only appeared because <em>real humans don't close apps cleanly the way test scripts do.</em>
+      </p>
+      <p class="reflection-text">
+        Most importantly: <em>every technical decision is a trade-off.</em>
+        REST vs WebSocket. Polling vs push. SQLite vs Postgres.
+        The right answer depends on the scale and constraints of the problem, not on what sounds most impressive.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="cs-footer">
+  <p class="cs-footer-text">Vinay Kumar · Polish Case Study · 2024</p>
+</footer>
+
+<!-- ─── GET IN TOUCH ─── -->
+<section class="cs-contact-section">
+  <div class="cs-contact-inner">
+    <h2 class="cs-contact-heading">Get in touch</h2>
+    <div class="cs-contact-row">
+      <a href="mailto:cvinaykumaar@gmail.com" class="cs-email-pill">cvinaykumaar@gmail.com</a>
+      <div class="cs-social-icons">
+        <a href="https://www.linkedin.com/in/vinaykumarchakali/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+        <a href="https://github.com/VinnayKummar" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="mailto:cvinaykumaar@gmail.com" aria-label="Email">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+        <a href="./index.html" aria-label="Portfolio">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        </a>
+      </div>
+    </div>
+    <a href="./Vinay_Kumar_Resume.pdf" target="_blank" rel="noopener" class="cs-resume-link">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+      Vinay-Kumar-Resume.pdf
+    </a>
+  </div>
+</section>
+
+<style>
+.cs-contact-section {
+  background: #111;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 80px 6vw 60px;
+}
+.cs-contact-inner { max-width: 900px; margin: 0 auto; }
+.cs-contact-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 32px;
+  letter-spacing: -0.02em;
+}
+.cs-contact-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+.cs-email-pill {
+  display: inline-block;
+  padding: 14px 24px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 10px;
+  color: #e0e0e0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+  background: rgba(255,255,255,0.03);
+}
+.cs-email-pill:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+.cs-social-icons {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.cs-social-icons a {
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+}
+.cs-social-icons a:hover { color: #fff; }
+.cs-resume-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #a78bfa;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+.cs-resume-link:hover { color: #c4b5fd; }
+</style>
+
+<!-- ─── SCRIPTS ─── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reveal').forEach(el => {
+      el.style.opacity = '1'; el.style.transform = 'none';
+    });
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* page-load hero entrance */
+  gsap.fromTo('.cs-hero-tag',    { opacity:0, y:20 }, { opacity:1, y:0, duration:0.6, ease:'power3.out', delay:0.2 });
+  gsap.fromTo('.cs-hero-title',  { opacity:0, y:40 }, { opacity:1, y:0, duration:0.8, ease:'power3.out', delay:0.35 });
+  gsap.fromTo('.cs-hero-subtitle',{ opacity:0, y:30 }, { opacity:1, y:0, duration:0.7, ease:'power3.out', delay:0.55 });
+  gsap.fromTo('.cs-hero-tags',   { opacity:0, y:20 }, { opacity:1, y:0, duration:0.6, ease:'power3.out', delay:0.7 });
+
+  /* scroll reveals */
+  gsap.utils.toArray('.reveal').forEach(el => {
+    gsap.fromTo(el,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1, y: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 88%',
+          toggleActions: 'play none none none',
+        }
+      }
+    );
+  });
+
+  /* challenge cards stagger */
+  gsap.utils.toArray('.challenge-card').forEach((card, i) => {
+    gsap.fromTo(card,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1, y: 0,
+        duration: 0.6,
+        ease: 'power3.out',
+        delay: i * 0.08,
+        scrollTrigger: { trigger: card, start: 'top 90%', toggleActions: 'play none none none' }
+      }
+    );
+  });
+
+  /* outcome items stagger */
+  gsap.utils.toArray('.outcome-item').forEach((item, i) => {
+    gsap.fromTo(item,
+      { opacity: 0, x: -20 },
+      {
+        opacity: 1, x: 0,
+        duration: 0.5,
+        ease: 'power3.out',
+        delay: i * 0.06,
+        scrollTrigger: { trigger: item, start: 'top 90%', toggleActions: 'play none none none' }
+      }
+    );
+  });
+})();
+</script>
+</body>
+</html>
