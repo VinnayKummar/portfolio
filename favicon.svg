@@ -1,0 +1,17 @@
+<svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="cy" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7df9ff"/><stop offset="1" stop-color="#16c7d4"/></linearGradient>
+<radialGradient id="iris" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#a8fbff"/><stop offset="0.6" stop-color="#1fd3e0"/><stop offset="1" stop-color="#0a6f78"/></radialGradient>
+<filter id="g" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="140" height="140" rx="28" fill="#0a0b0d"/>
+<rect width="140" height="140" rx="28" fill="none" stroke="#1d2025" stroke-width="1.5"/>
+<g filter="url(#g)">
+<path d="M70 26 L122 112 L18 112 Z" fill="none" stroke="url(#cy)" stroke-width="6" stroke-linejoin="round"/>
+<path d="M44 88 Q70 70 96 88 Q70 106 44 88 Z" fill="#0a0b0d" stroke="url(#cy)" stroke-width="3.5"/>
+<circle cx="70" cy="88" r="11" fill="url(#iris)"/>
+<circle cx="70" cy="88" r="4.5" fill="#04141a"/>
+<circle cx="66" cy="84" r="2" fill="#eafdff"/>
+</g>
+<path d="M70 26 L70 10 M122 112 L136 121 M18 112 L4 121" stroke="url(#cy)" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+</svg>
