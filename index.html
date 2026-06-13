@@ -1326,7 +1326,7 @@ footer {
   const typeTarget = document.getElementById('typeTarget');
   const typeTexts  = [
     'Full-Stack Engineer',
-    'React · Node.js · Go · AWS',
+    'React · Node.js · AWS',
     'Open Source Contributor',
   ];
   let tIdx = 0, cIdx = 0, typing = true;
@@ -1345,8 +1345,8 @@ footer {
 
   /* ── MARQUEE ── */
   function buildMarquee() {
-    const items = ['React','Node.js','TypeScript','Go','AWS','PostgreSQL',
-                   'Docker','GraphQL','Redis','Kubernetes','Python','Next.js'];
+    const items = ['React','Node.js','TypeScript','AWS','PostgreSQL',
+                   'Docker','Python','Next.js','FastAPI'];
     const html = items.map((item, i) =>
       `<span class="marquee-item"><span class="${i % 2 === 0 ? 'filled' : ''}">${item}</span><span class="marquee-sep"></span></span>`
     ).join('');
