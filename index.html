@@ -25,6 +25,7 @@
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'DM Mono', monospace;
+  --font-ui: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'Inter', sans-serif;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -108,11 +109,12 @@ nav.scrolled {
   list-style: none;
 }
 .nav-links a {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  letter-spacing: 0.05em;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
   color: var(--text-muted);
-  transition: color 0.2s;
+  transition: color 0.25s var(--ease-out);
   position: relative;
 }
 .nav-links a::after {
@@ -172,9 +174,10 @@ nav.scrolled {
 }
 .mobile-menu.open { clip-path: circle(150% at calc(100% - 40px) 40px); }
 .mobile-menu a {
-  font-family: var(--font-display);
+  font-family: var(--font-ui);
   font-size: clamp(28px, 8vw, 48px);
   font-weight: 600;
+  letter-spacing: -0.02em;
   color: var(--text-muted);
   transition: color 0.2s;
 }
@@ -202,12 +205,24 @@ nav.scrolled {
   z-index: 3;
 }
 .hero-greeting {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  letter-spacing: 0.12em;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
   color: var(--accent);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   opacity: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-greeting::before {
+  content: '';
+  width: 28px;
+  height: 1.5px;
+  background: var(--accent);
+  display: inline-block;
 }
 .hero-headline {
   font-family: var(--font-display);
@@ -999,7 +1014,7 @@ footer {
 
   <!-- LEFT COLUMN -->
   <div class="hero-left">
-    <p class="hero-greeting">// Software Developer</p>
+    <p class="hero-greeting">Software Developer</p>
     <h1 class="hero-headline" id="heroHeadline"></h1>
     <p class="hero-desc">
       I'm Vinay, a software developer. I like problems that don't have an
