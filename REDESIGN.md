@@ -1,5 +1,13 @@
 # Portfolio redesign
 
+## Resume content update, November 3, 2026
+
+Updated from the user's supplied SR_SDE.pdf while keeping the established design. Added Meta, ANTERM, and Starlite Infotech experience; Quinnipiac University education; both certifications; and the resume's six skill categories. Updated AI Job Application Agent and Polish project results. Polish now names React, PostgreSQL, 200+ users, and 45+ tests; retained older debugging details are explicitly labeled as earlier implementation notes.
+
+All resume buttons now serve the supplied PDF from Vinay_Kumar_Resume.pdf. The deployed file is byte-identical to the user's PDF. LinkedIn and Polish repository destinations follow the PDF's embedded links. Existing additional projects and case-study routes remain.
+
+This update passed Hallmark's static and Chrome checks with 0 failures, 0 unresolved reflex findings, and 0 warnings across 20 desktop/mobile captures. The original redo-render limit below describes the earlier design deployment, not this content update.
+
 Full Hallmark redesign of cvinaykumar.com across the homepage and ApplyPilot, Polish, and Web Scraper Pipeline case studies.
 
 Preserved the existing dark/cyan brand, Space Grotesk and Inter, portrait, project screenshots, résumé and contact destinations, project facts, case-study routes, external scripts, and Google Analytics configuration. All 23 distinct original link destinations remain. Long technical content remains available rather than being cut to a marketing-page word limit.
