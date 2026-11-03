@@ -1,0 +1,14 @@
+{
+  "scanned": "2026-11-03",
+  "source": "VinnayKummar/portfolio",
+  "live_url": "https://cvinaykumar.com/",
+  "findings": {
+    "fonts": "Space Grotesk, Inter and DM Mono in index.html:17",
+    "palette": "Dark background and cyan accent in original index.html:22",
+    "framework": "Static HTML; four pages",
+    "motion": "GSAP, ScrollTrigger and Lenis; original content depended on animation initialization",
+    "hosting": "Vercel GitHub commit status"
+  },
+  "preserve": ["brand fonts", "dark/cyan palette", "portrait", "project facts", "project screenshots", "all 23 link destinations", "analytics"],
+  "introduce": ["shared tokens", "editorial layouts", "static homepage content", "keyboard focus", "responsive page composition"]
+}

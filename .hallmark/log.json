@@ -1,0 +1,22 @@
+[
+  {
+    "mode": "redesign",
+    "depth": "full",
+    "scope": "site",
+    "theme": "brand",
+    "inspiration": "Console, adapted to existing cyan and original fonts",
+    "shape": "Portfolio Index with technical case studies",
+    "axes": "dark/grotesk/cyan",
+    "hero": "Stage homepage; Banner case studies",
+    "nav": "split mast",
+    "footer": "contact mast",
+    "imagery": "existing portrait and real project screenshots",
+    "signature": "Vinay's portrait beside his name",
+    "sections": ["portrait introduction", "selected projects", "other projects", "skills", "contact"],
+    "waived": ["77: bounded technical prose on scraper case study"],
+    "finish_review": "subagent: fix; shared SVG fill corrected",
+    "static_final": "0 FAIL; 0 unresolved REFLEX",
+    "render_limit": "Final two closing-tag corrections structurally verified; repeat render declined",
+    "prompt": "Use Hallmark to update the entire portfolio at cvinaykumar.com"
+  }
+]
