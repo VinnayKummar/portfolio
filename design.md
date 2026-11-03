@@ -1,5 +1,9 @@
 # Portfolio design system
 
+## REA-inspired refinement requested by the user
+
+Reference: https://github.com/morluto/rea, website/public/assets/styles.css and website/style-guide.md, with the live site at https://rea.tools/. Adapt the midnight reading surfaces, outlined panels, interactive examples and saved light/dark switch. Keep the existing Space Grotesk and Inter typography, cyan primary action, all resume facts, portrait, screenshots and routes. This request updates the original graphite palette below to midnight navy; light mode is a complete accessible counterpart. The project explorer presents existing project facts, not simulated live data. Its controls have keyboard navigation, and all project panels remain visible without JavaScript.
+
 Hallmark full redesign of cvinaykumar.com. Preserve all factual content, routes, links, IDs, analytics, and functional interactions. No files or component trees are deleted.
 
 Brand: Space Grotesk display, Inter body, DM Mono for code only. Dark graphite background and cyan #00d9ff accent from existing source. Console's restrained surfaces are inspiration, but the existing brand wins over the dealt theme. No gradients, glows, floating ornament, emoji icons, faux browser chrome, or scroll-dependent visibility.

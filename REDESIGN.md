@@ -38,3 +38,12 @@ All images are the existing portfolio's files. There are no stock or placeholder
 This is a static site. Serve the repository with a static HTTP server. The existing Vercel integration deploys the repository; no new hosting account or application is required.
 
 Shared design tokens live in tokens.css, structural defaults in base.css, and shared/homepage styles in portfolio.css. Case-study-specific layouts remain in each HTML file. design.md records the common system.
+
+
+## REA-inspired interaction and theme refinement
+
+Reference: morluto/rea, specifically the live rea.tools homepage and its public website stylesheet and style guide. Adapted its midnight navy reading surfaces, fine panel borders, persistent light/dark choice and interactive examples. The implementation is original and does not install REA's binary-analysis tooling or add runtime dependencies.
+
+Added a keyboard-accessible project explorer covering the three existing case studies. Its flow labels and outcomes reuse existing portfolio and resume facts. Added project-link and contact-email copying with visible success/failure messages. All resume text, images, links, routes and analytics remain; the PDF is unchanged. All panels remain readable with JavaScript disabled, while script-only controls stay hidden.
+
+Verification: Chrome checks across desktop and mobile, visual review in both themes, keyboard tabs/arrow/Home navigation, saved theme across reload and case-study navigation, copy success/fallback, and no-JavaScript content. Viewports checked at 320, 375, 768, 1280 and 1920 pixels. The metric warning about 60% was checked against the supplied resume: it refers to low-fit roles filtered, while 80% describes reduced manual drafting.

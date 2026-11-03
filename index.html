@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="./theme.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RK674J2KF"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -54,6 +55,7 @@ gtag("config", "G-9RK674J2KF");
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
+<button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch to light theme" aria-pressed="false"><svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></svg><svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20.5 14a8.5 8.5 0 0 1-10.5-10.5A8.5 8.5 0 1 0 20.5 14Z"/></svg></button>
 </nav>
 
 <!-- Mobile menu -->
@@ -132,6 +134,9 @@ gtag("config", "G-9RK674J2KF");
 <!-- ─── WORK ─── -->
 <section id="work">
   <div class="work-heading"><h2 class="section-title">Selected work</h2><div><p>I’m Vinay Kumar Chakali, a software engineer working across Python, TypeScript, LLM evaluation, and full-stack systems.</p><p class="work-role">My projects focus on useful AI automation and real-time applications.</p></div></div>
+<div class="project-explorer" data-project-explorer>
+  <div class="explorer-toolbar"><h3>Explore the work</h3><span>Choose a project</span></div>
+  <div class="explorer-tabs" hidden aria-label="Project explorer"><button type="button" id="tab-agent" data-project-tab aria-controls="panel-agent">AI agent</button><button type="button" id="tab-polish" data-project-tab aria-controls="panel-polish">Polish</button><button type="button" id="tab-scraper" data-project-tab aria-controls="panel-scraper">Data pipeline</button></div><div id="panel-agent" data-project-panel aria-labelledby="tab-agent" tabindex="0"><div class="explorer-intro"><h3>AI Job Application Agent</h3><p>Prompts extract requirements, rank opportunities, and tailor truthful application content.</p></div><ol class="project-flow"><li>Find roles</li><li>Rank for fit</li><li>Tailor content</li></ol><dl class="project-readings"><div><dt>career sites</dt><dd>40+</dd></div><div><dt>low-fit roles filtered</dt><dd>60%</dd></div><div><dt>less manual drafting</dt><dd>80%</dd></div></dl><div class="explorer-actions"><a href="./applypilot.html">Read the case study</a><button type="button" hidden data-copy="https://cvinaykumar.com/applypilot.html" data-success="Project link copied." aria-describedby="explorer-copy-status">Copy project link</button></div></div><div id="panel-polish" data-project-panel aria-labelledby="tab-polish" tabindex="0"><div class="explorer-intro"><h3>Polish Music Matching</h3><p>A real-time application connecting people listening to the same song.</p></div><ol class="project-flow"><li>Play a song</li><li>Find a match</li><li>Start a conversation</li></ol><dl class="project-readings"><div><dt>users in two weeks</dt><dd>200+</dd></div><div><dt>faster match retrieval</dt><dd>60%</dd></div><div><dt>unit tests</dt><dd>45+</dd></div></dl><div class="explorer-actions"><a href="./polish.html">Read the case study</a><button type="button" hidden data-copy="https://cvinaykumar.com/polish.html" data-success="Project link copied." aria-describedby="explorer-copy-status">Copy project link</button></div></div><div id="panel-scraper" data-project-panel aria-labelledby="tab-scraper" tabindex="0"><div class="explorer-intro"><h3>Web Scraper Pipeline</h3><p>Book data travels from public pages into a database and a searchable API.</p></div><ol class="project-flow"><li>Scrape pages</li><li>Store in SQLite</li><li>Serve with FastAPI</li></ol><dl class="project-readings"><div><dt>data collection</dt><dd>Python</dd></div><div><dt>structured storage</dt><dd>SQLite</dd></div><div><dt>search and pagination</dt><dd>FastAPI</dd></div></dl><div class="explorer-actions"><a href="./scraper.html">Read the case study</a><button type="button" hidden data-copy="https://cvinaykumar.com/scraper.html" data-success="Project link copied." aria-describedby="explorer-copy-status">Copy project link</button></div></div><p class="copy-status" role="status" id="explorer-copy-status"></p></div>
   <div class="projects-grid">
 
     <div class="project-card" id="proj0">
@@ -313,7 +318,8 @@ gtag("config", "G-9RK674J2KF");
   <a href="mailto:cvinaykumaar@gmail.com" class="contact-email reveal">
     cvinaykumaar@gmail.com
   </a>
-  <p class="contact-location">New York, NY. Open to relocate.</p>
+  <div class="contact-tools"><button type="button" hidden data-copy="cvinaykumaar@gmail.com" data-success="Email address copied." aria-describedby="email-copy-status">Copy email</button><p class="copy-status" id="email-copy-status" role="status"></p></div>
+<p class="contact-location">New York, NY. Open to relocate.</p>
   <a class="contact-phone" href="tel:+14753449717">475-344-9717</a>
   <div class="social-row reveal">
     <!-- GitHub -->
@@ -355,5 +361,6 @@ gtag("config", "G-9RK674J2KF");
  document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
 })();
 </script>
+<script src="./explorer.js" defer></script>
 </body>
 </html>

@@ -1,9 +1,9 @@
 /* Hallmark shared brand tokens. */
 :root {
  --space-20:20px; --space-32:32px; --space-48:48px; --space-56:56px; --space-80:80px; --space-120:120px;
- --bg:#0a0e10; --surface:#11181b; --surface2:#182226; --text:#f0ede6; --text-muted:#a8b6bc; --text-soft:#c7d0d3; --text-dim:var(--text-muted);
- --accent:#00d9ff; --accent-dim:#10343c; --accent-hover:#71e9ff; --accent-glow:#10343c; --border:#304046; --border-acc:#38616c; --grad-from:var(--accent); --grad-to:var(--accent);
- --color-paper:var(--bg); --color-paper-2:var(--surface); --color-paper-3:#080c0e; --color-ink:var(--text); --color-ink-2:var(--text-soft); --color-muted:var(--text-muted); --color-rule:var(--border); --color-rule-2:#4e636b; --color-accent:var(--accent); --color-accent-ink:var(--bg); --color-focus:var(--accent); --color-error:#ff9b97; --color-success:#83d6ac;
+ --bg:#1e1e2e; --surface:#181825; --surface2:#313244; --text:#cdd6f4; --text-muted:#a6adc8; --text-soft:#bac2de; --text-dim:var(--text-muted);
+ --accent:#00d9ff; --accent-dim:#10343c; --accent-hover:#71e9ff; --accent-glow:#10343c; --border:#45475a; --border-acc:#7f9aca; --grad-from:var(--accent); --grad-to:var(--accent);
+ --color-paper:var(--bg); --color-paper-2:var(--surface); --color-paper-3:#11111b; --color-ink:var(--text); --color-ink-2:var(--text-soft); --color-muted:var(--text-muted); --color-rule:var(--border); --color-rule-2:#4e636b; --color-accent:var(--accent); --color-accent-ink:var(--bg); --color-focus:var(--accent); --color-error:#ff9b97; --color-success:#83d6ac;
  --font-display:'Space Grotesk',sans-serif; --font-body:'Inter',sans-serif; --font-mono:'DM Mono',monospace; --font-ui:var(--font-body); --font-outlier:var(--font-mono);
  --space-3xs:2px; --space-2xs:4px; --space-xs:8px; --space-sm:12px; --space-md:16px; --space-lg:24px; --space-xl:40px; --space-2xl:64px; --space-3xl:96px; --space-4xl:144px;
  --text-xs:.875rem; --text-sm:.875rem; --text-md:1rem; --text-lg:1.25rem; --text-xl:1.5rem; --text-2xl:2rem; --text-3xl:2.5rem; --text-display-s:clamp(2.5rem,5vw,4.5rem); --text-display:clamp(3rem,7vw,6rem); --text-section:clamp(2.25rem,4vw,3.5rem); --text-title:1.5rem; --text-lead:clamp(1.125rem,1.5vw,1.375rem);
@@ -11,4 +11,15 @@
  --radius-card:8px; --radius-pill:6px; --rule-hair:1px; --shadow-card:none; --tracking-display:-.045em; --display-weight:500;
  --ease-out:cubic-bezier(.16,1,.3,1); --ease-in:cubic-bezier(.7,0,.84,0); --ease-in-out:cubic-bezier(.65,0,.35,1); --dur-micro:120ms; --dur-short:220ms; --dur-long:420ms;
  --z-base:1; --z-raised:10; --z-dropdown:100; --z-sticky:200; --z-sticky-nav:300; --z-modal:400; --z-toast:500; --z-tooltip:600;
+}
+
+:root { color-scheme:dark; --reading-accent:#89b4fa; --panel-hover:#252538; --photo-filter:grayscale(.25); }
+:root[data-theme="light"] {
+ color-scheme:light;
+ --bg:#f7f9fc; --surface:#eef2f8; --surface2:#e2e8f1;
+ --text:#202a3d; --text-muted:#536078; --text-soft:#39475f;
+ --accent:#007489; --accent-dim:#d9edf0; --accent-hover:#005a6c; --accent-glow:#d9edf0;
+ --border:#c4cedd; --border-acc:#758da9; --reading-accent:#245687;
+ --color-paper-3:#e7edf5; --color-rule-2:#73839c; --panel-hover:#e3eaf3;
+ --color-error:#a62438; --color-success:#226a48; --photo-filter:grayscale(0);
 }
