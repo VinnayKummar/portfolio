@@ -104,3 +104,6 @@ body{background:var(--bg)}
 /* Shared page background, with only the transparent needle artwork above it. */
 .portfolio-home .introduction.needle-gallery,.portfolio-home .needle-gallery .needle-stage,.portfolio-home .needle-gallery .needle-canvas{background:transparent;box-shadow:none}
 .needle-gallery:before,.needle-gallery:after,.needle-stage:before,.needle-stage:after{display:none}
+/* Company marks supplied by the portfolio owner. */
+.experience-company{display:flex;align-items:center;gap:var(--space-md);margin-bottom:var(--space-md);min-width:0}.experience-company .company-logo{display:block;flex-shrink:0;width:56px;height:56px;object-fit:contain;border-radius:10px}.experience-row .experience-company h3{margin:0;min-width:0;font-size:26px;line-height:1.2}
+@media(max-width:760px){.experience-company .company-logo{width:48px;height:48px}.experience-row .experience-company h3{font-size:25px}}
