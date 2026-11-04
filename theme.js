@@ -1,8 +1,8 @@
 // Apply the saved theme before styles load; core content needs no JavaScript.
 (() => {
   const root = document.documentElement;
-  let preference = 'dark';
-  try { preference = localStorage.getItem('portfolio-theme') || 'dark'; } catch {}
+  let preference = 'light';
+  try { preference = localStorage.getItem('portfolio-stripe-theme') || 'light'; } catch {}
   const apply = (value) => {
     const theme = value === 'light' ? 'light' : 'dark';
     root.dataset.theme = theme;
@@ -20,11 +20,12 @@
       button.addEventListener('click', () => {
         const theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
         apply(theme);
-        try { localStorage.setItem('portfolio-theme', theme); } catch {}
+        try { localStorage.setItem('portfolio-stripe-theme', theme); } catch {}
       });
     });
   });
   window.addEventListener('storage', (event) => {
-    if (event.key === 'portfolio-theme') apply(event.newValue);
+    if (event.key === 'portfolio-stripe-theme') apply(event.newValue);
   });
 })();
+

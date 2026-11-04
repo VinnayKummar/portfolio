@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="./theme.js"></script>
+<script src="./theme.js?v=15"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RK674J2KF"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -13,132 +13,18 @@ gtag("config", "G-9RK674J2KF");
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Polish music matching app | Vinay Kumar</title>
 <meta name="description" content="How Vinay Kumar built Polish, a real-time music matching application with FastAPI, WebSocket chat, geolocation and JWT authentication."/>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="icon" type="image/svg+xml" href="./favicon.svg?v=6"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 
-<style>
-/* Hallmark · shape: Technical case · genre: modern-minimal · theme: brand · redesign: full
- * paper: graphite · accent: cyan · display: Space Grotesk · body: Inter · hero: Banner · nav: Edge · footer: Contact mast · signature: the actual Polish dashboard
- * axes: dark/grotesk/cyan · posture: restrained · contrast: pending render · fold: pending render · v2.0.0 */
-/* Hallmark · pre-emit critique: P4 H4 E4 S5 R5 V4 · weakest: H, grouped the full technical narrative into spacious editorial chapters */
-/* Hallmark · reworded "A real-time music matching web application that connects strangers who are listening to the same song at the same moment." to "Meet strangers listening to the same song, at the same moment." · 58 names the long hero copy */
-/* Hallmark · reworded "∞ / 0" to "Shared / Separate" · 46a rejects unmeasured absolutes; preserved the listening and connection concepts */
-/* Hallmark · dropped .cs-section-label, .cs-hero-tag, .screenshot-bar, .dot · 54 and 47a remove duplicate eyebrows and decorative browser furniture, with 2024 retained in footer */
-/* Hallmark · dismissed 59 · ten original Polish chapters preserve the engineering narrative, including bug resolutions and lessons */
-/* Hallmark · answered F4 · the GitHub action is a neutral outlined secondary control beside the cyan Live demo primary */
-/* Hallmark · answered F20 · the fifth Polish feature spans both columns to close the feature list */
-/* Hallmark · answered F1 · quotation marks in the Polish problem description preserve the author’s conversational voice */
-@import url('./tokens.css');
-@import url('./base.css');
-:root { --space-32: 32px; --space-48: 48px; --space-56: 56px; --space-80: 80px; --space-120: 120px; --text-dim: var(--text-muted); --border-acc: var(--border); --grad: var(--accent); }
-html, body { overflow-x: clip; }
-body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.65; }
-* { margin: 0; box-sizing: border-box; }
-a { text-decoration: none; }
-button, a { -webkit-tap-highlight-color: var(--accent-dim); }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: var(--space-2xs); }
-a:hover { text-decoration: underline; text-underline-offset: 4px; }
-a:active { opacity: .8; }
-nav { position: relative; display: flex; align-items: center; justify-content: space-between; gap: var(--space-32); max-width: 1280px; margin: 0 auto; padding: var(--space-lg) var(--space-48); background: var(--bg); border-bottom: 1px solid var(--border); }
-.nav-back, .nav-links-right { display: flex; align-items: center; gap: var(--space-lg); }
-.nav-back, .nav-title, .nav-links-right a { font-family: var(--font-body); font-size: 14px; color: var(--text-muted); }
-.nav-back { gap: var(--space-xs); min-height: 48px; color: var(--text); }
-.nav-back svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
-.nav-links-right a { display: inline-flex; align-items: center; min-height: 48px; }
-.cs-hero, .cs-container, .cs-container-wide, .cs-contact-inner, .cs-footer { width: 100%; max-width: 1280px; padding-inline: var(--space-48); margin-inline: auto; }
-.cs-hero { padding-block: var(--space-3xl) var(--space-80); }
-.cs-hero-title { font-size: clamp(48px, 7vw, 96px); line-height: 1.05; font-weight: 500; color: var(--text); letter-spacing: -.04em; overflow-wrap: break-word; min-width: 0; text-wrap: balance; }
-.cs-hero-subtitle { font-size: clamp(20px, 2.2vw, 28px); max-width: 48ch; color: var(--text-muted); margin-top: var(--space-lg); }
-.cs-hero-tags { display: flex; flex-wrap: wrap; gap: var(--space-md); margin-top: var(--space-32); }
-.cs-tag { font-size: 14px; font-family: var(--font-body); color: var(--text-muted); }
-.hero-actions { display: flex; gap: var(--space-md); flex-wrap: wrap; margin-top: var(--space-32); }
-.hero-cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-xs); min-height: 48px; padding: var(--space-sm) var(--space-lg); border-radius: 6px; border: 1px solid var(--accent); color: var(--bg); background: var(--accent); font-size: 16px; font-weight: 500; }
-.hero-cta-btn svg { flex: 0 0 auto; }
-.hero-cta-btn:hover { background: var(--text); border-color: var(--text); text-decoration: none; }
-.hero-cta-outline { background: var(--surface); border-color: var(--border); color: var(--text); }
-.hero-cta-outline:hover { background: var(--surface2); border-color: var(--text-muted); }
-.project-overview { padding-block: var(--space-2xl); background: var(--surface); }
-.screenshot-block { margin-block: var(--space-48); }
-.project-overview .screenshot-block { margin-top: 0; }
-.screenshot-img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 8px; }
-.overview-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr) minmax(0,2fr); gap: var(--space-32); margin-top: var(--space-xl); }
-.overview-label { font-size: 14px; color: var(--text-muted); margin-bottom: var(--space-xs); }
-.overview-value { font-size: 16px; color: var(--text); }
-.cs-container-wide > .cs-container { padding-inline: 0; }
-.cs-section { padding-block: var(--space-120); }
-.cs-section:nth-of-type(even) { color:var(--text); background: var(--surface); }
-.cs-divider { display: none; }
-.cs-section-heading { font-size: clamp(36px,4vw,56px); font-weight: 500; color: var(--text); line-height: 1.08; letter-spacing: -.03em; margin-bottom: var(--space-xl); text-wrap: balance; overflow-wrap: break-word; min-width: 0; }
-.cs-body, .feature-body, .challenge-body, .reflection-text { font-size: 16px; line-height: 1.75; color: var(--text-muted); max-width: 65ch; }
-.cs-body + .cs-body { margin-top: var(--space-lg); }
-strong { color: var(--text); font-weight: 500; }
-code { font-family: var(--font-mono); font-size: 14px; overflow-wrap: anywhere; color: var(--text); }
-.listening-statement { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--space-32); margin-top: var(--space-56); padding-top: var(--space-xl); border-top: 1px solid var(--border); }
-.listening-statement > div > p:first-child { font-family: var(--font-display); font-size: clamp(28px,4vw,48px); color: var(--text); }
-.listening-statement > div > p:last-child { font-family: var(--font-body); font-size: 14px; color: var(--text-muted); margin-top: var(--space-xs); }
-.solution-list { display: grid; gap: var(--space-md); margin-block: var(--space-32) var(--space-48); padding-left: var(--space-lg); max-width: 65ch; color: var(--text-muted); }
-.solution-list li { padding-left: var(--space-xs); }
-.try-it-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--space-32); margin-top: var(--space-48); }
-.try-step { display: flex; gap: var(--space-md); padding-block: var(--space-lg); border-top: 1px solid var(--border); }
-.try-num, .outcome-num { font-size: 14px; font-family: var(--font-body); color: var(--text-muted); font-variant-numeric: tabular-nums; }
-.try-title { font-size: 20px; color: var(--text); font-weight: 500; margin-bottom: var(--space-sm); }
-.try-link { display: inline-block; font-size: 16px; color: var(--accent); overflow-wrap: anywhere; margin-bottom: var(--space-sm); }
-.try-desc { color: var(--text-muted); font-size: 16px; line-height: 1.65; }
-.stack-group { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,2fr); gap: var(--space-32); padding-block: var(--space-32); border-bottom: 1px solid var(--border); }
-.stack-group-label { font-size: 16px; color: var(--text); }
-.stack-pills { display: flex; flex-wrap: wrap; gap: var(--space-sm) var(--space-lg); }
-.stack-pill { font-family: var(--font-body); font-size: 16px; color: var(--text-muted); }
-.features-grid > :last-child:nth-child(odd) { grid-column:1 / -1; }
-.features-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-xl) var(--space-32); }
-.feature-card { padding-block: var(--space-32); border-top: 1px solid var(--border); }
-.feature-num { display: none; }
-.feature-title, .challenge-title { font-size: 24px; color: var(--text); font-weight: 500; line-height: 1.25; margin-bottom: var(--space-md); }
-.challenges-list { display: grid; gap: var(--space-48); }
-.challenge-card { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-32); border-top: 1px solid var(--border); padding-top: var(--space-32); }
-.challenge-problem { padding-right: var(--space-32); }
-.outcomes-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-32); }
-.outcome-item { display: flex; gap: var(--space-md); padding-top: var(--space-lg); border-top: 1px solid var(--border); }
-.outcome-text { font-size: 16px; line-height: 1.75; color: var(--text-muted); }
-.reflection-block { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--space-32); }
-.reflection-text { font-size: 18px; }
-.reflection-text em { font-style: normal; color: var(--text); }
-.cs-footer { padding-block: var(--space-32); }
-.cs-footer-text { font-size: 14px; color: var(--text-muted); }
-.cs-contact-section { color:var(--text); border-top: 1px solid var(--border); padding-block: var(--space-3xl); background: var(--surface); }
-.cs-contact-heading { font-size: clamp(36px,4vw,56px); font-weight: 500; margin-bottom: var(--space-xl); }
-.cs-contact-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-32); margin-bottom: var(--space-32); }
-.cs-email-pill { font-size: clamp(18px,2.8vw,32px); color: var(--text); overflow-wrap: anywhere; }
-.cs-social-icons { display: flex; gap: var(--space-md); }
-.cs-social-icons a { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; color: var(--text-muted); }
-.cs-social-icons a:hover { color: var(--accent); }
-.cs-resume-link { display: inline-flex; align-items: center; gap: var(--space-sm); min-height: 48px; font-size: 16px; color: var(--accent); }
-.reveal { opacity: 1; transform: none; }
-@media (max-width: 800px) {
-  nav, .cs-hero, .cs-container, .cs-container-wide, .cs-contact-inner, .cs-footer { padding-inline: var(--space-lg); }
-  nav { gap: var(--space-md); flex-wrap: wrap; }
-  .nav-title { display: none; }
-  .nav-links-right { gap: var(--space-md); }
-  .cs-hero { padding-block: var(--space-2xl); }
-  .cs-section { padding-block: var(--space-80); }
-  .project-overview { padding-block: var(--space-xl); }
-  .overview-grid, .try-it-grid, .features-grid, .challenge-card, .outcomes-list, .reflection-block, .stack-group { grid-template-columns: minmax(0,1fr); }
-  .overview-grid { gap: var(--space-lg); }
-  .listening-statement { grid-template-columns: minmax(0,1fr); }
-  .cs-section-heading { margin-bottom: var(--space-32); }
-  .cs-container-wide > .cs-container { padding-inline: 0; }
-  .challenge-problem { padding-right: 0; }
-  .cs-contact-section { padding-block: var(--space-2xl); }
-}
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
-</style>
-<link rel="stylesheet" href="./portfolio.css"/>
-</head>
-<body>
 
-<!-- ─── NAV ─── -->
-<nav>
+
+
+
+<link rel="stylesheet" href="./stripe.css?v=19"/>
+<link rel="stylesheet" href="./case-walkthrough.css?v=21"/></head>
+<body class="case-study visual-walkthrough case-polish"><nav>
   <a href="./index.html" class="nav-back">
     <svg aria-hidden="true" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
     Back to portfolio
@@ -149,36 +35,7 @@ code { font-family: var(--font-mono); font-size: 14px; overflow-wrap: anywhere; 
     <a href="./index.html#work">All work</a>
   </div>
 <button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch to light theme" aria-pressed="false"><svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></svg><svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20.5 14a8.5 8.5 0 0 1-10.5-10.5A8.5 8.5 0 1 0 20.5 14Z"/></svg></button>
-</nav>
-
-<!-- ─── HERO ─── -->
-<header class="cs-hero">
-
-  <div>
-
-    <h1 class="cs-hero-title grad-text">Polish</h1>
-    <p class="cs-hero-subtitle">
-      Meet strangers listening to the same song, at the same moment.
-    </p>
-    <div class="cs-hero-tags" aria-label="Project technologies">
-      <span class="cs-tag">Full stack</span>
-      <span class="cs-tag">Real time</span>
-      <span class="cs-tag">FastAPI</span>
-      <span class="cs-tag">React</span>
-      <span class="cs-tag">PostgreSQL</span>
-    </div>
-    <div class="hero-actions">
-      <a href="https://music-polish.onrender.com/" target="_blank" rel="noopener" class="hero-cta-btn">
-        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-        Live demo
-      </a>
-      <a href="https://github.com/VinnayKummar/Music-polish" target="_blank" rel="noopener" class="hero-cta-btn hero-cta-outline">
-        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-        GitHub
-      </a>
-    </div>
-  </div>
-</header>
+</nav><header class="cs-hero walkthrough-hero"><h1 class="cs-hero-title">Polish</h1><p class="cs-hero-subtitle">Play a song. Find someone listening too. Start a conversation.</p><a class="hero-action" href="#walkthrough">Follow the walkthrough</a></header><main class="visual-case"><section class="story-context"><p>The starting point</p><h2>Music can connect people. Listening alone hides that connection.</h2><p>Polish makes a shared song the starting point for meeting someone. Follow one listener from signing in to starting a chat.</p><div class="story-route"><span>The problem</span><i aria-hidden="true"></i><span>The process</span><i aria-hidden="true"></i><span>The result</span></div></section><section class="journey-overview" aria-labelledby="journey-title"><h2 id="journey-title">The whole idea, at a glance.</h2><ol class="journey-track"><li><span>01</span><strong>Create an account</strong></li><li><span>02</span><strong>Choose a song</strong></li><li><span>03</span><strong>Find a listening match</strong></li><li><span>04</span><strong>Start a conversation</strong></li></ol><p>Follow the steps below. No technical background needed.</p></section><section id="walkthrough" class="walkthrough" data-walkthrough aria-label="Step-by-step walkthrough"><nav class="step-navigation" aria-label="Walkthrough steps"><a class="step-link" href="#step-1"><span>01</span>Create an account</a><a class="step-link" href="#step-2"><span>02</span>Choose a song</a><a class="step-link" href="#step-3"><span>03</span>Find a listening match</a><a class="step-link" href="#step-4"><span>04</span>Start a conversation</a></nav><div class="walkthrough-panels"><article class="walkthrough-step" id="step-1" data-walkthrough-step aria-labelledby="step-title-1"><div class="step-explanation"><p class="step-count">Step 1 of 4</p><h2 id="step-title-1">Create an account</h2><p class="step-intro">Choose a username and password, then sign in to start your own listening session.</p><p>This screenshot shows the real entry screen. The account lets the app keep each person’s listening activity separate.</p><details class="step-technical"><summary>What happens behind the scenes</summary><p>The project uses JWT-based authentication to identify signed-in sessions.</p></details></div><div class="step-visual"><figure class="walkthrough-shot"><a href="./shots/loginpage.png" class="shot-zoom" data-image-zoom aria-label="Enlarge screenshot: Create an account"><img src="./shots/loginpage.png" alt="The real sign-in screen: create an account or sign in." loading="lazy"/><span>View full size</span></a><figcaption>The real sign-in screen: create an account or sign in.</figcaption></figure><figure class="explanation-scene" data-explanation-scene><div class="scene-top"><span>An illustrated example</span><button type="button" data-scene-play hidden aria-pressed="false">Play explanation</button></div><div class="scene-frames"><div class="scene-frame" data-scene-frame><div class="scene-objects scene-polish"><div class="topic-motion sound-motion" aria-hidden="true"><i style="--bar:0"></i><i style="--bar:1"></i><i style="--bar:2"></i><i style="--bar:3"></i><i style="--bar:4"></i><i style="--bar:5"></i><i style="--bar:6"></i><i style="--bar:7"></i><i style="--bar:8"></i><i style="--bar:9"></i><i style="--bar:10"></i><i style="--bar:11"></i><i style="--bar:12"></i><i style="--bar:13"></i><i style="--bar:14"></i><i style="--bar:15"></i></div><div class="motion-item"><span class="motion-index">01</span><strong>New listener</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Choose a username</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Create account</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 1 of 3</span><h3>Choose your own identity</h3><p>A username keeps your session separate from other listeners.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-polish"><div class="topic-motion sound-motion" aria-hidden="true"><i style="--bar:0"></i><i style="--bar:1"></i><i style="--bar:2"></i><i style="--bar:3"></i><i style="--bar:4"></i><i style="--bar:5"></i><i style="--bar:6"></i><i style="--bar:7"></i><i style="--bar:8"></i><i style="--bar:9"></i><i style="--bar:10"></i><i style="--bar:11"></i><i style="--bar:12"></i><i style="--bar:13"></i><i style="--bar:14"></i><i style="--bar:15"></i></div><div class="motion-item"><span class="motion-index">01</span><strong>Your account</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Sign in</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Listening session</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 2 of 3</span><h3>Sign in securely</h3><p>The app recognizes your account when you sign in.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-polish"><div class="topic-motion sound-motion" aria-hidden="true"><i style="--bar:0"></i><i style="--bar:1"></i><i style="--bar:2"></i><i style="--bar:3"></i><i style="--bar:4"></i><i style="--bar:5"></i><i style="--bar:6"></i><i style="--bar:7"></i><i style="--bar:8"></i><i style="--bar:9"></i><i style="--bar:10"></i><i style="--bar:11"></i><i style="--bar:12"></i><i style="--bar:13"></i><i style="--bar:14"></i><i style="--bar:15"></i></div><div class="motion-item"><span class="motion-index">01</span><strong>Signed in</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Open your library</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Ready to play</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 3 of 3</span><h3>You are ready to listen</h3><p>Your next action is choosing a song from the library.</p></div></div></div><div class="scene-controls" hidden><button type="button" data-scene-prev aria-label="Previous moment">‹</button><div class="scene-dots" aria-label="Explanation moments"><button type="button" data-scene-dot aria-label="Show moment 1">1</button><button type="button" data-scene-dot aria-label="Show moment 2">2</button><button type="button" data-scene-dot aria-label="Show moment 3">3</button></div><button type="button" data-scene-next aria-label="Next moment">›</button></div><figcaption>Illustration of the workflow, not a live app or a product screenshot.</figcaption></figure></div></article><article class="walkthrough-step" id="step-2" data-walkthrough-step aria-labelledby="step-title-2"><div class="step-explanation"><p class="step-count">Step 2 of 4</p><h2 id="step-title-2">Choose a song</h2><p class="step-intro">Pick a song from your library. The player shows what you are listening to now.</p><p>In the real screen below, the library is on the right and the current song and playback controls are on the left. The app now has a song to compare with other listeners.</p><details class="step-technical"><summary>What happens behind the scenes</summary><p>React presents the player while the backend tracks current listening activity.</p></details></div><div class="step-visual"><figure class="walkthrough-shot"><a href="./shots/musicplaying.png" class="shot-zoom" data-image-zoom aria-label="Enlarge screenshot: Choose a song"><img src="./shots/musicplaying.png" alt="The real player: a selected song, playback controls, and the song library." loading="lazy"/><span>View full size</span></a><figcaption>The real player: a selected song, playback controls, and the song library.</figcaption></figure><figure class="explanation-scene" data-explanation-scene><div class="scene-top"><span>An illustrated example</span><button type="button" data-scene-play hidden aria-pressed="false">Play explanation</button></div><div class="scene-frames"><div class="scene-frame" data-scene-frame><div class="scene-objects scene-polish"><div class="topic-motion sound-motion" aria-hidden="true"><i style="--bar:0"></i><i style="--bar:1"></i><i style="--bar:2"></i><i style="--bar:3"></i><i style="--bar:4"></i><i style="--bar:5"></i><i style="--bar:6"></i><i style="--bar:7"></i><i style="--bar:8"></i><i style="--bar:9"></i><i style="--bar:10"></i><i style="--bar:11"></i><i style="--bar:12"></i><i style="--bar:13"></i><i style="--bar:14"></i><i style="--bar:15"></i></div><div class="motion-item"><span class="motion-index">01</span><strong>Song A</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Song B</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Song C</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 1 of 3</span><h3>Pick a song</h3><p>Choose one track from the library.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-polish"><div class="topic-motion sound-motion" aria-hidden="true"><i style="--bar:0"></i><i style="--bar:1"></i><i style="--bar:2"></i><i style="--bar:3"></i><i style="--bar:4"></i><i style="--bar:5"></i><i style="--bar:6"></i><i style="--bar:7"></i><i style="--bar:8"></i><i style="--bar:9"></i><i style="--bar:10"></i><i style="--bar:11"></i><i style="--bar:12"></i><i style="--bar:13"></i><i style="--bar:14"></i><i style="--bar:15"></i></div><div class="motion-item"><span class="motion-index">01</span><strong>Your player</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Song A</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Playing now</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 2 of 3</span><h3>Playback starts</h3><p>The player tells the app which song is active.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-polish"><div class="topic-motion sound-motion" aria-hidden="true"><i style="--bar:0"></i><i style="--bar:1"></i><i style="--bar:2"></i><i style="--bar:3"></i><i style="--bar:4"></i><i style="--bar:5"></i><i style="--bar:6"></i><i style="--bar:7"></i><i style="--bar:8"></i><i style="--bar:9"></i><i style="--bar:10"></i><i style="--bar:11"></i><i style="--bar:12"></i><i style="--bar:13"></i><i style="--bar:14"></i><i style="--bar:15"></i></div><div class="motion-item"><span class="motion-index">01</span><strong>You: Song A</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Listening activity</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Find the same song</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 3 of 3</span><h3>Share listening activity</h3><p>The backend can now compare this song with other active listeners.</p></div></div></div><div class="scene-controls" hidden><button type="button" data-scene-prev aria-label="Previous moment">‹</button><div class="scene-dots" aria-label="Explanation moments"><button type="button" data-scene-dot aria-label="Show moment 1">1</button><button type="button" data-scene-dot aria-label="Show moment 2">2</button><button type="button" data-scene-dot aria-label="Show moment 3">3</button></div><button type="button" data-scene-next aria-label="Next moment">›</button></div><figcaption>Illustration of the workflow, not a live app or a product screenshot.</figcaption></figure></div></article><article class="walkthrough-step" id="step-3" data-walkthrough-step aria-labelledby="step-title-3"><div class="step-explanation"><p class="step-count">Step 3 of 4</p><h2 id="step-title-3">Find a listening match</h2><p class="step-intro">The app looks for another active listener playing the same song.</p><p>The real screenshot shows a matching listener beneath the library. The matching logic uses a 30-second activity window so the connection is about what people are playing now. Location can be shared when browser permission is granted.</p><details class="step-technical"><summary>What happens behind the scenes</summary><p>The original case study describes song matching, geolocation, and a 30-second active window.</p></details></div><div class="step-visual"><figure class="walkthrough-shot"><a href="./shots/Dashbord.png" class="shot-zoom" data-image-zoom aria-label="Enlarge screenshot: Find a listening match"><img src="./shots/Dashbord.png" alt="The real Listening Nearby result: a matching user and a Chat button." loading="lazy"/><span>View full size</span></a><figcaption>The real Listening Nearby result: a matching user and a Chat button.</figcaption></figure><figure class="explanation-scene" data-explanation-scene><div class="scene-top"><span>An illustrated example</span><button type="button" data-scene-play hidden aria-pressed="false">Play explanation</button></div><div class="scene-frames"><div class="scene-frame" data-scene-frame><div class="scene-objects scene-polish"><div class="topic-motion sound-motion" aria-hidden="true"><i style="--bar:0"></i><i style="--bar:1"></i><i style="--bar:2"></i><i style="--bar:3"></i><i style="--bar:4"></i><i style="--bar:5"></i><i style="--bar:6"></i><i style="--bar:7"></i><i style="--bar:8"></i><i style="--bar:9"></i><i style="--bar:10"></i><i style="--bar:11"></i><i style="--bar:12"></i><i style="--bar:13"></i><i style="--bar:14"></i><i style="--bar:15"></i></div><div class="motion-item"><span class="motion-index">01</span><strong>You: Song A</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Other listener: Song A</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Same track</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 1 of 3</span><h3>Two people are listening</h3><p>Imagine you and another person are both playing Song A.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-polish"><div class="topic-motion sound-motion" aria-hidden="true"><i style="--bar:0"></i><i style="--bar:1"></i><i style="--bar:2"></i><i style="--bar:3"></i><i style="--bar:4"></i><i style="--bar:5"></i><i style="--bar:6"></i><i style="--bar:7"></i><i style="--bar:8"></i><i style="--bar:9"></i><i style="--bar:10"></i><i style="--bar:11"></i><i style="--bar:12"></i><i style="--bar:13"></i><i style="--bar:14"></i><i style="--bar:15"></i></div><div class="motion-item"><span class="motion-index">01</span><strong>Same song</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Active recently</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Check for a match</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 2 of 3</span><h3>Check that both are active</h3><p>The match uses a 30-second active window, rather than an old listening history.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-polish"><div class="topic-motion sound-motion" aria-hidden="true"><i style="--bar:0"></i><i style="--bar:1"></i><i style="--bar:2"></i><i style="--bar:3"></i><i style="--bar:4"></i><i style="--bar:5"></i><i style="--bar:6"></i><i style="--bar:7"></i><i style="--bar:8"></i><i style="--bar:9"></i><i style="--bar:10"></i><i style="--bar:11"></i><i style="--bar:12"></i><i style="--bar:13"></i><i style="--bar:14"></i><i style="--bar:15"></i></div><div class="motion-item"><span class="motion-index">01</span><strong>Listening Nearby</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Matching listener</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Chat is available</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 3 of 3</span><h3>A match appears</h3><p>The matching listener appears in Listening Nearby.</p></div></div></div><div class="scene-controls" hidden><button type="button" data-scene-prev aria-label="Previous moment">‹</button><div class="scene-dots" aria-label="Explanation moments"><button type="button" data-scene-dot aria-label="Show moment 1">1</button><button type="button" data-scene-dot aria-label="Show moment 2">2</button><button type="button" data-scene-dot aria-label="Show moment 3">3</button></div><button type="button" data-scene-next aria-label="Next moment">›</button></div><figcaption>Illustration of the workflow, not a live app or a product screenshot.</figcaption></figure></div></article><article class="walkthrough-step" id="step-4" data-walkthrough-step aria-labelledby="step-title-4"><div class="step-explanation"><p class="step-count">Step 4 of 4</p><h2 id="step-title-4">Start a conversation</h2><p class="step-intro">Select Chat next to a match to begin a live conversation.</p><p>A persistent connection lets new messages appear without repeatedly refreshing the page. The project also includes typing indicators and message history. The diagram explains the connection; it is not a screenshot of a chat screen.</p><details class="step-technical"><summary>What happens behind the scenes</summary><p>WebSockets carry live chat events; PostgreSQL stores application data. To try matching, use two different accounts and play the same song.</p></details></div><div class="step-visual"><figure class="explanation-scene" data-explanation-scene><div class="scene-top"><span>An illustrated example</span><button type="button" data-scene-play hidden aria-pressed="false">Play explanation</button></div><div class="scene-frames"><div class="scene-frame" data-scene-frame><div class="scene-objects scene-polish"><div class="topic-motion sound-motion" aria-hidden="true"><i style="--bar:0"></i><i style="--bar:1"></i><i style="--bar:2"></i><i style="--bar:3"></i><i style="--bar:4"></i><i style="--bar:5"></i><i style="--bar:6"></i><i style="--bar:7"></i><i style="--bar:8"></i><i style="--bar:9"></i><i style="--bar:10"></i><i style="--bar:11"></i><i style="--bar:12"></i><i style="--bar:13"></i><i style="--bar:14"></i><i style="--bar:15"></i></div><div class="motion-item"><span class="motion-index">01</span><strong>Listening match</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Choose Chat</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Conversation opens</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 1 of 3</span><h3>Open the conversation</h3><p>Choose Chat beside a matched listener.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-polish"><div class="topic-motion sound-motion" aria-hidden="true"><i style="--bar:0"></i><i style="--bar:1"></i><i style="--bar:2"></i><i style="--bar:3"></i><i style="--bar:4"></i><i style="--bar:5"></i><i style="--bar:6"></i><i style="--bar:7"></i><i style="--bar:8"></i><i style="--bar:9"></i><i style="--bar:10"></i><i style="--bar:11"></i><i style="--bar:12"></i><i style="--bar:13"></i><i style="--bar:14"></i><i style="--bar:15"></i></div><div class="motion-item"><span class="motion-index">01</span><strong>You: Hello!</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Live connection</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Listener receives it</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 2 of 3</span><h3>A message travels</h3><p>A live connection carries the message to the other listener.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-polish"><div class="topic-motion sound-motion" aria-hidden="true"><i style="--bar:0"></i><i style="--bar:1"></i><i style="--bar:2"></i><i style="--bar:3"></i><i style="--bar:4"></i><i style="--bar:5"></i><i style="--bar:6"></i><i style="--bar:7"></i><i style="--bar:8"></i><i style="--bar:9"></i><i style="--bar:10"></i><i style="--bar:11"></i><i style="--bar:12"></i><i style="--bar:13"></i><i style="--bar:14"></i><i style="--bar:15"></i></div><div class="motion-item"><span class="motion-index">01</span><strong>You: Hello!</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Listener: Great song!</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Keep talking</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 3 of 3</span><h3>The reply arrives</h3><p>Messages appear without manually refreshing the page.</p></div></div></div><div class="scene-controls" hidden><button type="button" data-scene-prev aria-label="Previous moment">‹</button><div class="scene-dots" aria-label="Explanation moments"><button type="button" data-scene-dot aria-label="Show moment 1">1</button><button type="button" data-scene-dot aria-label="Show moment 2">2</button><button type="button" data-scene-dot aria-label="Show moment 3">3</button></div><button type="button" data-scene-next aria-label="Next moment">›</button></div><figcaption>Illustration of the workflow, not a live app or a product screenshot.</figcaption></figure></div></article></div><div class="walkthrough-controls" hidden><button type="button" data-step-prev>Previous step</button><p data-step-progress role="status" aria-live="polite"></p><button type="button" data-step-next>Next step <span aria-hidden="true">›</span></button></div></section><section class="story-conclusion" id="result"><p>The result</p><h2>A shared song becomes a conversation.</h2><p>Sign in, choose music, find an active match, and chat. The important idea: the connection comes from what both people are listening to now.</p><div class="story-results"><div><strong>200+</strong><span>users in the first two weeks</span></div><div><strong>60%</strong><span>faster match retrieval</span></div><div><strong>45+</strong><span>unit tests</span></div></div><a href="#walkthrough" class="story-restart">Walk through it again <span aria-hidden="true">↺</span></a></section><details class="engineering-appendix"><summary>Explore the full engineering notes</summary><div class="appendix-content">
 
 
 
@@ -536,7 +393,7 @@ code { font-family: var(--font-mono); font-size: 14px; overflow-wrap: anywhere; 
 </section>
 
 <!-- ─── FOOTER ─── -->
-<footer class="cs-footer">
+</div></details><nav class="next-case" aria-label="More case studies"><p>Explore another build</p><a href="./applypilot.html">AI Job Application Agent</a><a href="./polish.html">Polish</a><a href="./scraper.html">Web Scraper Pipeline</a></nav></main><footer class="cs-footer">
   <p class="cs-footer-text">Vinay Kumar Chakali / Polish case study / June 2025</p>
 </footer>
 
@@ -570,17 +427,4 @@ code { font-family: var(--font-mono); font-size: 14px; overflow-wrap: anywhere; 
 
 
 
-<!-- ─── SCRIPTS ─── -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script>
-(function () {
-  // The case study remains readable with JavaScript or animation libraries unavailable.
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-  }
-})();
-</script>
-</body>
-</html>
+<script src="./cinema.js?v=28" defer></script><script src="./case-walkthrough.js?v=21" defer></script></body></html>

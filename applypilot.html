@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="./theme.js"></script>
+<script src="./theme.js?v=15"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RK674J2KF"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -13,121 +13,18 @@ gtag("config", "G-9RK674J2KF");
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>AI Job Application Agent | Vinay Kumar Chakali</title>
 <meta name="description" content="Vinay Kumar’s ApplyPilot case study: a six-stage AI job application pipeline, cost-aware extraction, truthful document generation, and browser automation."/>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="icon" type="image/svg+xml" href="./favicon.svg?v=6"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 
-<style>
-/* Hallmark · shape: Long Document · genre: modern-minimal · theme: brand · redesign: full
- * paper: graphite · accent: cyan · display: Space Grotesk · body: Inter · hero: Banner · nav: editorial bar · footer: contact mast · signature: the six-stage autonomous pipeline
- * axes: dark/grotesk/cyan · posture: restrained · contrast: check · fold: check · v2.0.0 */
-/* Hallmark · pre-emit critique: P4 H4 E4 S5 R5 V4 · weakest: H, separated the pipeline overview from the long engineering account */
-/* Hallmark · reworded hero copy to a concise introduction · 58 limits the hero; original description retained in the overview */
-/* Hallmark · dropped .cs-hero-tag, .cs-label, .future-dot · 54 and 63 remove redundant eyebrow labels and ornamental dots */
-@import url('./tokens.css');
-@import url('./base.css');
-html, body { overflow-x: clip; }
-body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.65; }
-[hidden] { display: none !important; }
-a { color: inherit; text-decoration: none; }
-a:hover { color: var(--accent); }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-a:active { color: var(--text); }
-h1, h2, h3 { color: var(--text); font-family: var(--font-display); font-weight: 500; min-width: 0; overflow-wrap: break-word; text-wrap: balance; }
-nav { max-width: 1280px; margin-inline: auto; padding: var(--space-lg) calc(var(--space-lg) * 2); display: flex; align-items: center; justify-content: space-between; gap: var(--gap-columns); border-bottom: 1px solid var(--border); }
-.nav-back { display: inline-flex; align-items: center; gap: var(--space-xs); min-height: 48px; font-size: 14px; }
-.nav-back svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; }
-.nav-title { color: var(--text-muted); font-size: 14px; }
-.nav-right { display: flex; align-items: center; gap: var(--space-lg); font-size: 14px; }
-.nav-right a { display: inline-flex; align-items: center; min-height: 48px; }
-.cs-hero { max-width: 1280px; padding: var(--space-3xl) calc(var(--space-lg) * 2) calc(var(--space-xl) * 2); margin-inline: auto; }
-.cs-hero-title { font-size: clamp(48px, 7vw, 96px); letter-spacing: -.04em; line-height: 1.05; margin: 0 0 var(--space-lg); }
-.cs-hero-subtitle { max-width: 65ch; font-size: 20px; color: var(--text-muted); margin: 0 0 var(--gap-columns); }
-.hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-md); }
-.hero-action { display: inline-flex; align-items: center; min-height: 48px; padding: var(--space-sm) var(--space-lg); border: 1px solid var(--accent); border-radius: 6px; background: var(--accent); color: var(--bg); font-size: 16px; font-weight: 500; }
-.hero-action:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
-.hero-action:active { color: var(--bg); }
-.hero-tags { display: flex; flex-wrap: wrap; gap: var(--space-xs) var(--space-lg); padding: var(--gap-columns) 0 0; color: var(--text-muted); }
-.cs-tag { font-size: 14px; }
-.cs-wrap, .cs-wrap-wide { max-width: 1280px; padding-inline: calc(var(--space-lg) * 2); margin-inline: auto; }
-.pipeline-band { padding-block: var(--space-2xl) calc(var(--space-xl) * 2); background: var(--surface); color: var(--text); }
-.diagram-block { margin: 0; }
-.pipeline-heading { margin: 0 0 var(--gap-columns); font-size: 24px; }
-.pipeline-diagram { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: var(--gap-columns); }
-.pipe-node { border-top: 1px solid var(--border); padding-top: var(--space-lg); }
-.pipe-icon { color: var(--text); font-size: 32px; font-family: var(--font-display); line-height: 1.2; margin-bottom: var(--space-md); font-variant-numeric: tabular-nums; }
-.pipe-label { font-size: 16px; }
-.pipe-arrow { display: none; }
-.overview-meta { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: var(--gap-columns); margin-top: calc(var(--space-lg) * 2); padding-top: var(--gap-columns); border-top: 1px solid var(--border); }
-.meta-label { color: var(--text-muted); font-size: 14px; margin-bottom: var(--space-xs); }
-.meta-value { font-size: 16px; }
-.cs-section { padding-block: var(--section-gap-s); }
-.cs-section:nth-of-type(even) { background: var(--surface); color: var(--text); }
-.cs-section > .cs-wrap { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 0 var(--gap-columns); align-items: start; }
-.cs-heading { grid-column: 1; grid-row: 1 / span 12; font-size: clamp(36px, 4vw, 56px); letter-spacing: -.035em; line-height: 1.12; padding-right: var(--space-lg); margin: 0; }
-.cs-section > .cs-wrap > :not(.cs-heading) { grid-column: 2; }
-.cs-body { max-width: 65ch; color: var(--text-muted); font-size: 16px; margin: 0 0 var(--space-lg); }
-.cs-body strong { color: var(--text); font-weight: 500; }
-.cs-body a { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
-.cs-body code { font-family: var(--font-mono); font-size: 14px; color: var(--accent); }
-.architecture-stage { padding-block: var(--gap-columns); border-top: 1px solid var(--border); }
-.architecture-stage:first-of-type { padding-top: 0; border-top: 0; }
-.architecture-stage h3 { font-size: 24px; line-height: 1.35; margin: 0 0 var(--space-lg); letter-spacing: -.015em; }
-.architecture-stage h3 > span:first-child { display: inline; margin-right: var(--space-xs); font-variant-numeric: tabular-nums; }
-.grad-text { color: inherit; }
-.layers-diagram { margin-block: var(--gap-columns); }
-.layer-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: var(--gap-columns); padding-block: var(--space-lg); border-bottom: 1px solid var(--border); }
-.layer-name { font-size: 16px; color: var(--text); }
-.layer-desc { font-size: 14px; color: var(--text-muted); }
-.layer-content { font-size: 14px; color: var(--text-muted); }
-.layer-chip { display: block; margin-bottom: var(--space-xs); font-size: 16px; color: var(--text); }
-.future-list { display: grid; gap: 0; }
-.future-item { padding-block: var(--space-lg); border-top: 1px solid var(--border); }
-.future-item:first-child { padding-top: 0; border-top: 0; }
-.future-text { color: var(--text-muted); font-size: 16px; }
-.future-text strong { color: var(--text); font-weight: 500; }
-.cs-divider { height: 1px; background: var(--border); }
-.cs-footer { max-width: 1280px; margin-inline: auto; padding: calc(var(--space-lg) * 2); color: var(--text-muted); font-size: 14px; }
-.cs-footer-text { display: flex; gap: var(--space-lg); flex-wrap: wrap; }
-.cs-contact-section { padding-block: var(--space-3xl); background: var(--surface); color: var(--text); }
-.cs-contact-inner { max-width: 1280px; margin-inline: auto; padding-inline: calc(var(--space-lg) * 2); }
-.cs-contact-heading { font-size: clamp(36px,4vw,56px); line-height: 1.1; letter-spacing: -.035em; margin: 0 0 var(--gap-columns); }
-.cs-contact-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--gap-columns); margin-bottom: var(--gap-columns); }
-.cs-email-pill { display: inline-flex; align-items: center; min-height: 48px; font-size: clamp(16px,2.2vw,28px); text-decoration: underline; text-underline-offset: 8px; overflow-wrap: anywhere; }
-.cs-social-icons { display: flex; gap: var(--space-md); }
-.cs-social-icons a { min-width: 48px; min-height: 48px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 6px; }
-.cs-resume-link { display: inline-flex; align-items: center; min-height: 48px; gap: var(--space-xs); font-size: 14px; color: var(--text-muted); }
-.reveal { opacity: 1; transform: none; }
-@media (max-width: 960px) {
- .cs-section > .cs-wrap { grid-template-columns: minmax(0,1fr); gap: var(--gap-columns); }
- .cs-heading { grid-column: 1; grid-row: auto; }
- .cs-section > .cs-wrap > :not(.cs-heading) { grid-column: 1; }
- .pipeline-diagram { grid-template-columns: repeat(3,minmax(0,1fr)); }
- .overview-meta { grid-template-columns: repeat(2,minmax(0,1fr)); }
- .nav-title { display: none; }
-}
-@media (max-width: 600px) {
- nav { padding: var(--space-md) var(--space-lg); gap: var(--space-md); }
- .nav-right { gap: var(--space-md); }
- .nav-right a:last-child { display: none; }
- .cs-hero { padding: var(--space-2xl) var(--space-lg); }
- .cs-wrap, .cs-wrap-wide, .cs-contact-inner { padding-inline: var(--space-lg); }
- .cs-section, .cs-contact-section { padding-block: calc(var(--space-xl) * 2); }
- .pipeline-band { padding-block: calc(var(--space-lg) * 2); }
- .pipeline-diagram { grid-template-columns: repeat(2,minmax(0,1fr)); }
- .overview-meta { grid-template-columns: minmax(0,1fr); gap: var(--space-lg); }
- .layer-row { grid-template-columns: minmax(0,1fr); gap: var(--space-xs); }
- .cs-footer { padding: var(--gap-columns) var(--space-lg); }
-}
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
-</style>
-<link rel="stylesheet" href="./portfolio.css"/>
-</head>
-<body class="case-study case-applypilot">
 
-<!-- NAV -->
-<nav>
+
+
+
+<link rel="stylesheet" href="./stripe.css?v=19"/>
+<link rel="stylesheet" href="./case-walkthrough.css?v=21"/></head>
+<body class="case-study visual-walkthrough case-applypilot"><nav>
   <a href="./index.html" class="nav-back">
     <svg aria-hidden="true" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
     Portfolio
@@ -138,24 +35,7 @@ nav { max-width: 1280px; margin-inline: auto; padding: var(--space-lg) calc(var(
     <a href="./index.html#work">All work</a>
   </div>
 <button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch to light theme" aria-pressed="false"><svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></svg><svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20.5 14a8.5 8.5 0 0 1-10.5-10.5A8.5 8.5 0 1 0 20.5 14Z"/></svg></button>
-</nav>
-
-<!-- HERO -->
-<header class="cs-hero">
-  <div>
-    <h1 class="cs-hero-title">AI Job Application Agent</h1>
-    <p class="cs-hero-subtitle">An autonomous AI agent for careful, truthful job applications.</p>
-<div class="hero-actions"><a class="hero-action" href="https://github.com/Pickle-Pixel/ApplyPilot" target="_blank" rel="noopener">View upstream repository</a></div>
-    <div class="hero-tags">
-      <span class="cs-tag">Python</span>
-      <span class="cs-tag">Playwright</span>
-      <span class="cs-tag">MCP</span>
-      <span class="cs-tag">Claude Code</span>
-      <span class="cs-tag">LLM Orchestration</span>
-      <span class="cs-tag">Web Scraping</span>
-    </div>
-  </div>
-</header>
+</nav><header class="cs-hero walkthrough-hero"><h1 class="cs-hero-title">AI Job Application Agent</h1><p class="cs-hero-subtitle">From finding a role to completing an application, one careful step at a time.</p><a class="hero-action" href="#walkthrough">Follow the walkthrough</a></header><main class="visual-case"><section class="story-context"><p>The starting point</p><h2>Applying for jobs is a chain of repetitive tasks.</h2><p>Finding a role is only the beginning. You still need to read it, judge the fit, prepare documents, and work through the employer’s form.</p><div class="story-route"><span>The problem</span><i aria-hidden="true"></i><span>The process</span><i aria-hidden="true"></i><span>The result</span></div></section><section class="journey-overview" aria-labelledby="journey-title"><h2 id="journey-title">The whole idea, at a glance.</h2><ol class="journey-track"><li><span>01</span><strong>Find possible jobs</strong></li><li><span>02</span><strong>Read the full description</strong></li><li><span>03</span><strong>Keep jobs that fit</strong></li><li><span>04</span><strong>Prepare truthful documents</strong></li><li><span>05</span><strong>Complete the application</strong></li></ol><p>Follow the steps below. No technical background needed.</p></section><section id="walkthrough" class="walkthrough" data-walkthrough aria-label="Step-by-step walkthrough"><nav class="step-navigation" aria-label="Walkthrough steps"><a class="step-link" href="#step-1"><span>01</span>Find possible jobs</a><a class="step-link" href="#step-2"><span>02</span>Read the full description</a><a class="step-link" href="#step-3"><span>03</span>Keep jobs that fit</a><a class="step-link" href="#step-4"><span>04</span>Prepare truthful documents</a><a class="step-link" href="#step-5"><span>05</span>Complete the application</a></nav><div class="walkthrough-panels"><article class="walkthrough-step" id="step-1" data-walkthrough-step aria-labelledby="step-title-1"><div class="step-explanation"><p class="step-count">Step 1 of 5</p><h2 id="step-title-1">Find possible jobs</h2><p class="step-intro">Instead of opening dozens of career pages yourself, the system gathers available roles in one place.</p><p>The search starts with job boards and company career sites. The aim is broad coverage first, before deciding which jobs are worth applying for.</p><details class="step-technical"><summary>What happens behind the scenes</summary><p>The project extends an open-source ApplyPilot foundation with custom coverage across 40+ career sites.</p></details></div><div class="step-visual"><figure class="explanation-scene" data-explanation-scene><div class="scene-top"><span>An illustrated example</span><button type="button" data-scene-play hidden aria-pressed="false">Play explanation</button></div><div class="scene-frames"><div class="scene-frame" data-scene-frame><div class="scene-objects scene-applypilot"><div class="topic-motion document-motion" aria-hidden="true"><i></i><i></i><i></i><span>✓</span></div><div class="motion-item"><span class="motion-index">01</span><strong>Job boards</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Company career pages</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Open roles</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 1 of 3</span><h3>Start with multiple sources</h3><p>Roles can be spread across job boards and company career pages.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-applypilot"><div class="topic-motion document-motion" aria-hidden="true"><i></i><i></i><i></i><span>✓</span></div><div class="motion-item"><span class="motion-index">01</span><strong>Role A</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Role B</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Role C</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 2 of 3</span><h3>Collect the listings</h3><p>The collectors bring possible roles into one workflow.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-applypilot"><div class="topic-motion document-motion" aria-hidden="true"><i></i><i></i><i></i><span>✓</span></div><div class="motion-item"><span class="motion-index">01</span><strong>Collected roles</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>One working list</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Next: read each role</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 3 of 3</span><h3>Build one list</h3><p>A collected list is ready for reading and filtering.</p></div></div></div><div class="scene-controls" hidden><button type="button" data-scene-prev aria-label="Previous moment">‹</button><div class="scene-dots" aria-label="Explanation moments"><button type="button" data-scene-dot aria-label="Show moment 1">1</button><button type="button" data-scene-dot aria-label="Show moment 2">2</button><button type="button" data-scene-dot aria-label="Show moment 3">3</button></div><button type="button" data-scene-next aria-label="Next moment">›</button></div><figcaption>Illustration of the workflow, not a live app or a product screenshot.</figcaption></figure></div></article><article class="walkthrough-step" id="step-2" data-walkthrough-step aria-labelledby="step-title-2"><div class="step-explanation"><p class="step-count">Step 2 of 5</p><h2 id="step-title-2">Read the full description</h2><p class="step-intro">A short job preview rarely tells the whole story. This step opens the listing and collects the full requirements.</p><p>The system first looks for information already organized on the page. If that fails, it tries known page layouts. AI is the fallback, keeping paid AI calls for the difficult pages.</p><details class="step-technical"><summary>What happens behind the scenes</summary><p>Structured page data → known page layout → AI fallback. This is the three-tier extraction cascade.</p></details></div><div class="step-visual"><figure class="explanation-scene" data-explanation-scene><div class="scene-top"><span>An illustrated example</span><button type="button" data-scene-play hidden aria-pressed="false">Play explanation</button></div><div class="scene-frames"><div class="scene-frame" data-scene-frame><div class="scene-objects scene-applypilot"><div class="topic-motion document-motion" aria-hidden="true"><i></i><i></i><i></i><span>✓</span></div><div class="motion-item"><span class="motion-index">01</span><strong>Job preview</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Open full page</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Read requirements</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 1 of 3</span><h3>Open the listing</h3><p>A short preview may omit important requirements.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-applypilot"><div class="topic-motion document-motion" aria-hidden="true"><i></i><i></i><i></i><span>✓</span></div><div class="motion-item"><span class="motion-index">01</span><strong>Structured data</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Known layout</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>AI only if needed</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 2 of 3</span><h3>Try simple methods first</h3><p>Use structured page data, then known page layouts.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-applypilot"><div class="topic-motion document-motion" aria-hidden="true"><i></i><i></i><i></i><span>✓</span></div><div class="motion-item"><span class="motion-index">01</span><strong>Responsibilities</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Required experience</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Full description</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 3 of 3</span><h3>Keep a complete description</h3><p>The next stage can judge the role using its actual requirements.</p></div></div></div><div class="scene-controls" hidden><button type="button" data-scene-prev aria-label="Previous moment">‹</button><div class="scene-dots" aria-label="Explanation moments"><button type="button" data-scene-dot aria-label="Show moment 1">1</button><button type="button" data-scene-dot aria-label="Show moment 2">2</button><button type="button" data-scene-dot aria-label="Show moment 3">3</button></div><button type="button" data-scene-next aria-label="Next moment">›</button></div><figcaption>Illustration of the workflow, not a live app or a product screenshot.</figcaption></figure></div></article><article class="walkthrough-step" id="step-3" data-walkthrough-step aria-labelledby="step-title-3"><div class="step-explanation"><p class="step-count">Step 3 of 5</p><h2 id="step-title-3">Keep jobs that fit</h2><p class="step-intro">The AI compares the role with my actual experience, so unsuitable jobs do not go further.</p><p>Think of this as a filter, not a promise of getting hired. Each role receives a fit score; low-fit roles stop here before time is spent preparing an application.</p><details class="step-technical"><summary>What happens behind the scenes</summary><p>The source case study describes a 1–10 fit score and filtering out 60% of low-fit roles.</p></details></div><div class="step-visual"><figure class="explanation-scene" data-explanation-scene><div class="scene-top"><span>An illustrated example</span><button type="button" data-scene-play hidden aria-pressed="false">Play explanation</button></div><div class="scene-frames"><div class="scene-frame" data-scene-frame><div class="scene-objects scene-applypilot"><div class="topic-motion document-motion" aria-hidden="true"><i></i><i></i><i></i><span>✓</span></div><div class="motion-item"><span class="motion-index">01</span><strong>Job requirements</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Verified experience</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Compare</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 1 of 3</span><h3>Compare both sides</h3><p>Read the job requirements alongside verified experience.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-applypilot"><div class="topic-motion document-motion" aria-hidden="true"><i></i><i></i><i></i><span>✓</span></div><div class="motion-item"><span class="motion-index">01</span><strong>Poor fit: stop</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Relevant role: continue</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Shortlist</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 2 of 3</span><h3>Remove poor fits</h3><p>A relevance score helps decide which roles deserve more work.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-applypilot"><div class="topic-motion document-motion" aria-hidden="true"><i></i><i></i><i></i><span>✓</span></div><div class="motion-item"><span class="motion-index">01</span><strong>Relevant role</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Prepare documents</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Less wasted drafting</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 3 of 3</span><h3>Spend effort on the shortlist</h3><p>Only suitable roles move on to document preparation.</p></div></div></div><div class="scene-controls" hidden><button type="button" data-scene-prev aria-label="Previous moment">‹</button><div class="scene-dots" aria-label="Explanation moments"><button type="button" data-scene-dot aria-label="Show moment 1">1</button><button type="button" data-scene-dot aria-label="Show moment 2">2</button><button type="button" data-scene-dot aria-label="Show moment 3">3</button></div><button type="button" data-scene-next aria-label="Next moment">›</button></div><figcaption>Illustration of the workflow, not a live app or a product screenshot.</figcaption></figure></div></article><article class="walkthrough-step" id="step-4" data-walkthrough-step aria-labelledby="step-title-4"><div class="step-explanation"><p class="step-count">Step 4 of 5</p><h2 id="step-title-4">Prepare truthful documents</h2><p class="step-intro">The system brings the most relevant experience forward in the résumé and writes a job-specific cover letter.</p><p>It can change emphasis and wording, but companies, dates, education, and results stay fixed. Tailoring should make genuine experience easier to see, without inventing qualifications.</p><details class="step-technical"><summary>What happens behind the scenes</summary><p>Résumé tailoring and cover-letter writing are separate stages in the underlying six-stage pipeline.</p></details></div><div class="step-visual"><figure class="explanation-scene" data-explanation-scene><div class="scene-top"><span>An illustrated example</span><button type="button" data-scene-play hidden aria-pressed="false">Play explanation</button></div><div class="scene-frames"><div class="scene-frame" data-scene-frame><div class="scene-objects scene-applypilot"><div class="topic-motion document-motion" aria-hidden="true"><i></i><i></i><i></i><span>✓</span></div><div class="motion-item"><span class="motion-index">01</span><strong>Verified résumé</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Facts stay fixed</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>No invented claims</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 1 of 3</span><h3>Start from verified facts</h3><p>Companies, dates, education, and achievements stay fixed.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-applypilot"><div class="topic-motion document-motion" aria-hidden="true"><i></i><i></i><i></i><span>✓</span></div><div class="motion-item"><span class="motion-index">01</span><strong>Relevant work first</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Clearer wording</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Same true experience</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 2 of 3</span><h3>Bring relevant experience forward</h3><p>Change the ordering and wording so the match is easier to see.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-applypilot"><div class="topic-motion document-motion" aria-hidden="true"><i></i><i></i><i></i><span>✓</span></div><div class="motion-item"><span class="motion-index">01</span><strong>Tailored résumé</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Job-specific letter</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Ready for the form</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 3 of 3</span><h3>Prepare both documents</h3><p>The résumé and cover letter address this particular role.</p></div></div></div><div class="scene-controls" hidden><button type="button" data-scene-prev aria-label="Previous moment">‹</button><div class="scene-dots" aria-label="Explanation moments"><button type="button" data-scene-dot aria-label="Show moment 1">1</button><button type="button" data-scene-dot aria-label="Show moment 2">2</button><button type="button" data-scene-dot aria-label="Show moment 3">3</button></div><button type="button" data-scene-next aria-label="Next moment">›</button></div><figcaption>Illustration of the workflow, not a live app or a product screenshot.</figcaption></figure></div></article><article class="walkthrough-step" id="step-5" data-walkthrough-step aria-labelledby="step-title-5"><div class="step-explanation"><p class="step-count">Step 5 of 5</p><h2 id="step-title-5">Complete the application</h2><p class="step-intro">A browser agent opens the employer’s form, enters details, and uploads the prepared documents.</p><p>Different employers use different forms. The agent reads the page and chooses the next action instead of relying only on a fixed sequence of clicks. Human review before submission is listed as a planned improvement.</p><details class="step-technical"><summary>What happens behind the scenes</summary><p>Claude Code uses Playwright through MCP to interact with employer application pages. Submission reliability varies by site and remains a focus for evaluation.</p></details></div><div class="step-visual"><figure class="explanation-scene" data-explanation-scene><div class="scene-top"><span>An illustrated example</span><button type="button" data-scene-play hidden aria-pressed="false">Play explanation</button></div><div class="scene-frames"><div class="scene-frame" data-scene-frame><div class="scene-objects scene-applypilot"><div class="topic-motion document-motion" aria-hidden="true"><i></i><i></i><i></i><span>✓</span></div><div class="motion-item"><span class="motion-index">01</span><strong>Employer form</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Read each field</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Choose next action</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 1 of 3</span><h3>Read the employer’s page</h3><p>The browser agent identifies fields and upload controls.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-applypilot"><div class="topic-motion document-motion" aria-hidden="true"><i></i><i></i><i></i><span>✓</span></div><div class="motion-item"><span class="motion-index">01</span><strong>Personal details</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Work history</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Document uploads</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 2 of 3</span><h3>Complete the required fields</h3><p>It enters details and uploads the prepared documents.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-applypilot"><div class="topic-motion document-motion" aria-hidden="true"><i></i><i></i><i></i><span>✓</span></div><div class="motion-item"><span class="motion-index">01</span><strong>Site-specific checks</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Submission reliability</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Human review: planned</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 3 of 3</span><h3>Check the workflow’s limits</h3><p>Different employer pages can fail in different ways. Human review before submission remains a planned improvement.</p></div></div></div><div class="scene-controls" hidden><button type="button" data-scene-prev aria-label="Previous moment">‹</button><div class="scene-dots" aria-label="Explanation moments"><button type="button" data-scene-dot aria-label="Show moment 1">1</button><button type="button" data-scene-dot aria-label="Show moment 2">2</button><button type="button" data-scene-dot aria-label="Show moment 3">3</button></div><button type="button" data-scene-next aria-label="Next moment">›</button></div><figcaption>Illustration of the workflow, not a live app or a product screenshot.</figcaption></figure></div></article></div><div class="walkthrough-controls" hidden><button type="button" data-step-prev>Previous step</button><p data-step-progress role="status" aria-live="polite"></p><button type="button" data-step-next>Next step <span aria-hidden="true">›</span></button></div></section><section class="story-conclusion" id="result"><p>The result</p><h2>A broad job search becomes a focused application.</h2><p>The system gathers opportunities, removes poor fits, prepares truthful documents, and works through the application page. It reduces repetition while keeping accuracy central.</p><div class="story-results"><div><strong>40+</strong><span>career sites covered</span></div><div><strong>60%</strong><span>low-fit roles filtered out</span></div><div><strong>80%</strong><span>less manual drafting</span></div></div><a href="#walkthrough" class="story-restart">Walk through it again <span aria-hidden="true">↺</span></a></section><details class="engineering-appendix"><summary>Explore the full engineering notes</summary><div class="appendix-content">
 
 <section class="pipeline-band" aria-label="Application pipeline">
   <div class="cs-wrap-wide">
@@ -241,7 +121,7 @@ nav { max-width: 1280px; margin-inline: auto; padding: var(--space-lg) calc(var(
         <div class="layer-row">
           <div class="layer-badge"><div class="layer-name">Tier 1</div><div class="layer-desc">Free</div></div>
           <div class="layer-content">
-            <span class="layer-chip active">JSON-LD</span>
+            <code class="layer-chip active">JSON-LD</code>
             <span>: schema.org structured data : clean and free</span>
           </div>
         </div>
@@ -315,7 +195,7 @@ nav { max-width: 1280px; margin-inline: auto; padding: var(--space-lg) calc(var(
 </section>
 
 <!-- FOOTER -->
-<footer class="cs-footer">
+</div></details><nav class="next-case" aria-label="More case studies"><p>Explore another build</p><a href="./applypilot.html">AI Job Application Agent</a><a href="./polish.html">Polish</a><a href="./scraper.html">Web Scraper Pipeline</a></nav></main><footer class="cs-footer">
   <p class="cs-footer-text"><span>Vinay Kumar</span><span>ApplyPilot</span><span>Agentic AI &amp; Automation</span></p>
 </footer>
 
@@ -349,13 +229,4 @@ nav { max-width: 1280px; margin-inline: auto; padding: var(--space-lg) calc(var(
 
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script>
-(function () {
-  // Readability is the baseline; these retained libraries never hide content.
-  if (window.gsap && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
-})();
-</script>
-</body>
-</html>
+<script src="./cinema.js?v=28" defer></script><script src="./case-walkthrough.js?v=21" defer></script></body></html>

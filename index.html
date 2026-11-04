@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="./theme.js"></script>
+<script src="./theme.js?v=15"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RK674J2KF"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -11,23 +11,18 @@ gtag("config", "G-9RK674J2KF");
 </script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Vinay Kumar Chakali | Software Engineer</title>
-<meta name="description" content="Vinay Kumar Chakali, software engineer in New York. Experience at Meta, ANTERM and Starlite Infotech across LLM evaluation, AI automation and full-stack systems."/>
+<title>Vinay Kumar Chakali | AI/ML Engineer</title>
+<meta name="description" content="Vinay Kumar Chakali, AI/ML engineer in New York. Building AI automation, reliable ML data workflows, and full-stack applications. Experience at Meta, ANTERN and Starlite Infotech."/>
 <link rel="canonical" href="https://cvinaykumar.com/"/>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="icon" type="image/svg+xml" href="./favicon.svg?v=6"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="./portfolio.css"/>
-<style>
-/* Hallmark · shape: Portfolio Index · genre: modern-minimal · theme: brand · redesign: full
- * paper: graphite · accent: cyan · display: Space Grotesk · body: Inter · hero: Stage · nav: split mast · footer: contact mast · signature: Vinay’s portrait beside his name
- * axes: dark/grotesk/cyan · posture: restrained · contrast: checked · fold: checked · v2.0.0 */
-/* Hallmark · pre-emit critique: P4 H4 E4 S4 R5 V4 · weakest: V, replaced project tiles with editorial rows */
-/* Hallmark · reworded "Hello, Vinay here!" to "Vinay Kumar." · 30a removes the emoji greeting and the static title works without JavaScript */
-/* Hallmark · reworded "Things I've Built" to "Selected work" · 54 names the redundant Selected Work eyebrow above the old heading */
-/* Hallmark · answered F7 · consistent résumé and social controls share borders, while project content uses open editorial rows rather than repeated cards */
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+
+
+
+<link rel="stylesheet" href="./stripe.css?v=27"/>
 </head>
 <body class="portfolio-home">
 <a class="skip-link" href="#hero">Skip to content</a>
@@ -44,7 +39,7 @@ gtag("config", "G-9RK674J2KF");
 
 <!-- ─── NAV ─── -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">VK</a>
+  <a href="#hero" class="nav-logo" aria-label="Vinay Kumar, home">VK<span>Vinay Kumar<br>AI/ML Engineer</span></a>
   <ul class="nav-links">
     <li><a href="#experience">Experience</a></li>
     <li><a href="#work">Work</a></li>
@@ -52,14 +47,14 @@ gtag("config", "G-9RK674J2KF");
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="./Vinay_Kumar_Resume.pdf" target="_blank" rel="noopener" class="nav-resume">Resume</a>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
+  <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-controls="mobileMenu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 <button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch to light theme" aria-pressed="false"><svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></svg><svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20.5 14a8.5 8.5 0 0 1-10.5-10.5A8.5 8.5 0 1 0 20.5 14Z"/></svg></button>
 </nav>
 
 <!-- Mobile menu -->
-<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-menu" id="mobileMenu" hidden role="dialog" aria-modal="true" aria-label="Navigation"><button class="menu-close" type="button" aria-label="Close navigation">Close <span aria-hidden="true">×</span></button><p class="menu-caption">Find your way.</p>
   <a href="#experience" class="mobile-link">Experience</a>
   <a href="#work" class="mobile-link">Work</a>
   <a href="#skills" class="mobile-link">Skills</a>
@@ -70,58 +65,46 @@ gtag("config", "G-9RK674J2KF");
 <main>
 <!-- ─── HERO ─── -->
 <section id="hero">
-
-
-  <!-- LEFT COLUMN -->
-  <div class="intro-copy">
-    <h1 class="name-display" id="heroHeadline"><span>Vinay</span><span>Kumar.</span></h1>
-    <p class="hero-desc">Software engineer focused on AI evaluation, automation, and full-stack systems.</p>
-    <div class="hero-terminal" hidden><span id="typeTarget">Full-Stack Engineer</span><span class="cursor-blink"></span></div>
-
-    <!-- Social icons -->
-    <div class="hero-socials" id="heroCTA">
-      <a href="https://github.com/VinnayKummar" target="_blank" rel="noopener" class="hero-social-link" aria-label="GitHub">
-        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-      </a>
-      <a href="https://www.linkedin.com/in/vinay-kumar-chakali/" target="_blank" rel="noopener" class="hero-social-link" aria-label="LinkedIn">
-        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-      </a>
-      <a href="https://leetcode.com/u/Cvinaykumar/" target="_blank" rel="noopener" class="hero-social-link" aria-label="LeetCode">
-        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
-      </a>
-    </div>
-
-    <!-- CTAs -->
-    <div class="hero-cta">
-      <a href="./Vinay_Kumar_Resume.pdf" target="_blank" rel="noopener" class="btn-primary">Resume</a>
-      <a href="mailto:cvinaykumaar@gmail.com" class="btn-outline">cvinaykumaar@gmail.com</a>
-    </div>
-  </div>
-
-  <!-- RIGHT COLUMN, big photo -->
+ <div class="intro-copy">
+ <h1 class="name-display" id="heroHeadline">AI engineering.<br>Real-world impact.</h1>
+ <p class="hero-desc">I build useful AI products, intelligent workflows, and reliable software.</p>
+ <div class="hero-cta"><a class="btn-primary hero-work-link" href="#work">Explore selected work <span aria-hidden="true">↗</span></a><a class="hero-talk" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a></div>
+ <p class="hero-footnote">Based in New York. Open to relocate.</p></div>
   <div class="hero-right">
     <div class="hero-photo-wrap" id="heroPhoto">
 
-      <img src="./vinay.jpg" alt="Vinay Kumar, Software Development Engineer" class="hero-photo" fetchpriority="high" width="800" height="1000"/>
-<div class="hero-photo-caption"><span>Vinay Kumar Chakali</span><span>New York, NY</span></div>
+      <img src="./vinay.jpg" alt="Vinay Kumar, AI/ML Engineer" class="hero-photo" fetchpriority="high" width="800" height="1000"/>
+<div class="hero-photo-caption"><span>Vinay Kumar Chakali</span><span>New York, NY</span></div><div class="portrait-contact" aria-label="Contact Vinay"><a class="portrait-email" href="mailto:cvinaykumaar@gmail.com">cvinaykumaar@gmail.com</a><a class="portrait-phone" href="tel:+14753449717">475-344-9717</a><div class="portrait-socials">
+    <!-- GitHub -->
+    <a href="https://github.com/VinnayKummar" target="_blank" rel="noopener" class="social-btn" aria-label="GitHub">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+    </a>
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/vinay-kumar-chakali/" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <!-- LeetCode -->
+    <a href="https://leetcode.com/u/Cvinaykumar/" target="_blank" rel="noopener" class="social-btn" aria-label="LeetCode">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
+    </a>
+  </div></div>
     </div>
-  </div>
-</section>
+  </div><div class="fabric-art" aria-hidden="true"><svg viewBox="0 0 900 800" preserveAspectRatio="xMidYMid slice"><g class="fabric-strands"></g></svg></div>
+ </section>
 
+<section id="introduction" class="introduction needle-gallery" aria-label="Interactive light sculpture"><div class="signal-stage needle-stage" aria-hidden="true"><canvas class="needle-canvas"></canvas></div></section>
 <!-- ─── MARQUEE ─── -->
-<aside class="marquee-section" aria-hidden="true">
-  <div class="marquee-track" id="marqueeTrack"><span>Python</span><span>TypeScript</span><span>LLM evaluation</span><span>React</span><span>FastAPI</span><span>PostgreSQL</span><span>AWS</span></div>
-</aside>
+
 
 <section id="experience" class="resume-section" aria-labelledby="experience-title">
-  <div class="resume-section-head"><h2 id="experience-title">Experience</h2><p>AI evaluation, workflow automation, and production software.</p></div>
+  <div class="resume-section-head"><h2 id="experience-title">Experience</h2></div>
   <div class="experience-list">
     <article class="experience-row">
-      <div><h3>Meta</h3><p class="position">Software Engineer</p><p class="experience-meta">Remote<br><time datetime="2026-08">Aug 2026</time> to present</p></div>
-      <ul><li>Completed <strong>500+ LLM evaluations</strong>, refining rubrics and ranking model reasoning to produce reliable preference data.</li><li>Automated annotation and labeling with Python, reducing training data preparation time by <strong>40%</strong>.</li><li>Reviewed labeled data and added Python validation tests, reducing rework by <strong>30%</strong> while collaborating with researchers and engineers.</li></ul>
+      <div><h3>Meta</h3><p class="position">AI/ML Engineer</p><p class="experience-meta">Remote<br><time datetime="2026-08">Aug 2026</time> to present</p></div>
+      <ul><li>Improved LLM reliability through <strong>500+ model evaluations</strong>, refining reasoning rubrics and preference-data quality with researchers and engineers.</li><li>Engineered Python automation for ML training-data workflows, reducing preparation time by <strong>40%</strong>.</li><li>Built Python validation tests and data-quality checks for ML workflows, reducing rework by <strong>30%</strong>.</li></ul>
     </article>
     <article class="experience-row">
-      <div><h3>ANTERM</h3><p class="position">Software Engineer</p><p class="experience-meta">Remote<br><time datetime="2024-08">Aug 2024</time> to <time datetime="2026-06">Jun 2026</time></p></div>
+      <div><h3>ANTERN</h3><p class="position">Software Engineer</p><p class="experience-meta">Remote<br><time datetime="2024-08">Aug 2024</time> to <time datetime="2026-06">Jun 2026</time></p></div>
       <ul><li>Owned AI workflow automation from requirements through deployment and support for <strong>3+ accounts</strong>, including Emoha, Topmate, and Clinik.</li><li>Connected research, lead scoring, CRM updates, and outreach through Konduit pipelines, improving response rates by <strong>6 to 8%</strong>.</li><li>Restored reliable production workflows by resolving CRM sync defects, lead-data gaps, and pipeline failures.</li></ul>
     </article>
     <article class="experience-row">
@@ -133,10 +116,10 @@ gtag("config", "G-9RK674J2KF");
 
 <!-- ─── WORK ─── -->
 <section id="work">
-  <div class="work-heading"><h2 class="section-title">Selected work</h2><div><p>I’m Vinay Kumar Chakali, a software engineer working across Python, TypeScript, LLM evaluation, and full-stack systems.</p><p class="work-role">My projects focus on useful AI automation and real-time applications.</p></div></div>
+  <div class="work-heading"><h2 class="section-title">Selected work</h2><div><p>I’m Vinay Kumar Chakali, an AI/ML engineer building intelligent workflows with Python, LLM APIs, and full-stack systems.</p><p class="work-role">My projects focus on useful AI automation and real-time applications.</p></div></div>
 <div class="project-explorer" data-project-explorer>
   <div class="explorer-toolbar"><h3>Explore the work</h3><span>Choose a project</span></div>
-  <div class="explorer-tabs" hidden aria-label="Project explorer"><button type="button" id="tab-agent" data-project-tab aria-controls="panel-agent">AI agent</button><button type="button" id="tab-polish" data-project-tab aria-controls="panel-polish">Polish</button><button type="button" id="tab-scraper" data-project-tab aria-controls="panel-scraper">Data pipeline</button></div><div id="panel-agent" data-project-panel aria-labelledby="tab-agent" tabindex="0"><div class="explorer-intro"><h3>AI Job Application Agent</h3><p>Prompts extract requirements, rank opportunities, and tailor truthful application content.</p></div><ol class="project-flow"><li>Find roles</li><li>Rank for fit</li><li>Tailor content</li></ol><dl class="project-readings"><div><dt>career sites</dt><dd>40+</dd></div><div><dt>low-fit roles filtered</dt><dd>60%</dd></div><div><dt>less manual drafting</dt><dd>80%</dd></div></dl><div class="explorer-actions"><a href="./applypilot.html">Read the case study</a><button type="button" hidden data-copy="https://cvinaykumar.com/applypilot.html" data-success="Project link copied." aria-describedby="explorer-copy-status">Copy project link</button></div></div><div id="panel-polish" data-project-panel aria-labelledby="tab-polish" tabindex="0"><div class="explorer-intro"><h3>Polish Music Matching</h3><p>A real-time application connecting people listening to the same song.</p></div><ol class="project-flow"><li>Play a song</li><li>Find a match</li><li>Start a conversation</li></ol><dl class="project-readings"><div><dt>users in two weeks</dt><dd>200+</dd></div><div><dt>faster match retrieval</dt><dd>60%</dd></div><div><dt>unit tests</dt><dd>45+</dd></div></dl><div class="explorer-actions"><a href="./polish.html">Read the case study</a><button type="button" hidden data-copy="https://cvinaykumar.com/polish.html" data-success="Project link copied." aria-describedby="explorer-copy-status">Copy project link</button></div></div><div id="panel-scraper" data-project-panel aria-labelledby="tab-scraper" tabindex="0"><div class="explorer-intro"><h3>Web Scraper Pipeline</h3><p>Book data travels from public pages into a database and a searchable API.</p></div><ol class="project-flow"><li>Scrape pages</li><li>Store in SQLite</li><li>Serve with FastAPI</li></ol><dl class="project-readings"><div><dt>data collection</dt><dd>Python</dd></div><div><dt>structured storage</dt><dd>SQLite</dd></div><div><dt>search and pagination</dt><dd>FastAPI</dd></div></dl><div class="explorer-actions"><a href="./scraper.html">Read the case study</a><button type="button" hidden data-copy="https://cvinaykumar.com/scraper.html" data-success="Project link copied." aria-describedby="explorer-copy-status">Copy project link</button></div></div><p class="copy-status" role="status" id="explorer-copy-status"></p></div>
+  <div class="explorer-tabs" hidden aria-label="Project explorer"><button type="button" id="tab-agent" data-project-tab aria-controls="panel-agent">AI agent</button><button type="button" id="tab-polish" data-project-tab aria-controls="panel-polish">Polish</button><button type="button" id="tab-scraper" data-project-tab aria-controls="panel-scraper">Data pipeline</button></div><div id="panel-agent" data-project-panel aria-labelledby="tab-agent" tabindex="0"><div class="explorer-intro"><h3>AI Job Application Agent</h3><p>Prompts extract requirements, rank opportunities, and tailor truthful application content.</p></div><ol class="project-flow"><li>Find roles</li><li>Rank for fit</li><li>Tailor content</li></ol><dl class="project-readings"><div><dt>career sites</dt><dd>40+</dd></div><div><dt>low-fit roles filtered</dt><dd>60%</dd></div><div><dt>less manual drafting</dt><dd>80%</dd></div></dl><div class="explorer-actions"><a href="./applypilot.html">Explore the case study <span aria-hidden="true">↗</span></a><button type="button" hidden data-copy="https://cvinaykumar.com/applypilot.html" data-success="Project link copied." aria-describedby="explorer-copy-status">Copy project link</button></div></div><div id="panel-polish" data-project-panel aria-labelledby="tab-polish" tabindex="0"><div class="explorer-intro"><h3>Polish Music Matching</h3><p>A real-time application connecting people listening to the same song.</p></div><ol class="project-flow"><li>Play a song</li><li>Find a match</li><li>Start a conversation</li></ol><dl class="project-readings"><div><dt>users in two weeks</dt><dd>200+</dd></div><div><dt>faster match retrieval</dt><dd>60%</dd></div><div><dt>unit tests</dt><dd>45+</dd></div></dl><div class="explorer-actions"><a href="./polish.html">Explore the case study <span aria-hidden="true">↗</span></a><button type="button" hidden data-copy="https://cvinaykumar.com/polish.html" data-success="Project link copied." aria-describedby="explorer-copy-status">Copy project link</button></div></div><div id="panel-scraper" data-project-panel aria-labelledby="tab-scraper" tabindex="0"><div class="explorer-intro"><h3>Web Scraper Pipeline</h3><p>Book data travels from public pages into a database and a searchable API.</p></div><ol class="project-flow"><li>Scrape pages</li><li>Store in SQLite</li><li>Serve with FastAPI</li></ol><dl class="project-readings"><div><dt>data collection</dt><dd>Python</dd></div><div><dt>structured storage</dt><dd>SQLite</dd></div><div><dt>search and pagination</dt><dd>FastAPI</dd></div></dl><div class="explorer-actions"><a href="./scraper.html">Explore the case study <span aria-hidden="true">↗</span></a><button type="button" hidden data-copy="https://cvinaykumar.com/scraper.html" data-success="Project link copied." aria-describedby="explorer-copy-status">Copy project link</button></div></div><p class="copy-status" role="status" id="explorer-copy-status"></p></div>
   <div class="projects-grid">
 
     <div class="project-card" id="proj0">
@@ -154,7 +137,7 @@ gtag("config", "G-9RK674J2KF");
         </div>
       </div>
       <div class="project-cta-row">
-        <a href="./applypilot.html" class="project-cta-primary">View Case Study</a>
+        <a href="./applypilot.html" class="project-cta-primary">View case study <span aria-hidden="true">↗</span></a>
         <a href="https://github.com/Pickle-Pixel/ApplyPilot" target="_blank" rel="noopener" class="project-cta-secondary">Built On</a>
       </div>
     </div>
@@ -174,7 +157,7 @@ gtag("config", "G-9RK674J2KF");
         </div>
       </div>
       <div class="project-cta-row">
-        <a href="./polish.html" class="project-cta-primary">View Case Study</a>
+        <a href="./polish.html" class="project-cta-primary">View case study <span aria-hidden="true">↗</span></a>
         <a href="https://github.com/VinnayKummar/Music-polish" target="_blank" rel="noopener" class="project-cta-secondary">GitHub</a>
       </div>
     </div>
@@ -193,7 +176,7 @@ gtag("config", "G-9RK674J2KF");
         </div>
       </div>
       <div class="project-cta-row">
-        <a href="./scraper.html" class="project-cta-primary">View Case Study</a>
+        <a href="./scraper.html" class="project-cta-primary">View case study <span aria-hidden="true">↗</span></a>
         <a href="https://github.com/VinnayKummar/web-scraper-pipeline" target="_blank" rel="noopener" class="project-cta-secondary">GitHub</a>
       </div>
     </div>
@@ -297,7 +280,7 @@ gtag("config", "G-9RK674J2KF");
   <div>
     <h2 class="section-title">What I Work With</h2>
   </div>
-  <div class="resume-skills" id="skillsGrid"><div class="skill-group"><h3>Languages</h3><p>Python, TypeScript, JavaScript, SQL, Java, C++, HTML5, CSS3.</p></div><div class="skill-group"><h3>AI evaluation</h3><p>Preference data collection, rubric creation, evaluation criteria, data labeling, LLM evaluation, response ranking, relevancy scoring, training data preparation.</p></div><div class="skill-group"><h3>Frameworks and data</h3><p>React, Node.js, Express.js, FastAPI, SQLAlchemy, Pydantic, WebSockets, PostgreSQL, MySQL, MongoDB, SQLite, Redis, query optimization.</p></div><div class="skill-group"><h3>Infrastructure and testing</h3><p>Docker, Kubernetes, CI/CD, GitHub Actions, AWS, Azure, PyTest, Jest, unit and integration testing, Git, GitHub, VS Code, Postman.</p></div><div class="skill-group"><h3>Core CS and AI</h3><p>Data structures and algorithms, OOP, distributed systems, microservices, concurrency, LLM APIs, RAG, LangChain, LangGraph.</p></div><div class="skill-group"><h3>Data and communication</h3><p>Data pipelines, data quality, technical writing, research collaboration.</p></div></div>
+  <div class="resume-skills" id="skillsGrid"><div class="skill-group"><h3>Languages</h3><p>Python, TypeScript, JavaScript, SQL, Java, C++, HTML5, CSS3.</p></div><div class="skill-group"><h3>AI/ML engineering</h3><p>Preference data collection, rubric creation, evaluation criteria, data labeling, LLM evaluation, response ranking, relevancy scoring, training data preparation.</p></div><div class="skill-group"><h3>Frameworks and data</h3><p>React, Node.js, Express.js, FastAPI, SQLAlchemy, Pydantic, WebSockets, PostgreSQL, MySQL, MongoDB, SQLite, Redis, query optimization.</p></div><div class="skill-group"><h3>Infrastructure and testing</h3><p>Docker, Kubernetes, CI/CD, GitHub Actions, AWS, Azure, PyTest, Jest, unit and integration testing, Git, GitHub, VS Code, Postman.</p></div><div class="skill-group"><h3>Core CS and AI</h3><p>Data structures and algorithms, OOP, distributed systems, microservices, concurrency, LLM APIs, RAG, LangChain, LangGraph.</p></div><div class="skill-group"><h3>Data and communication</h3><p>Data pipelines, data quality, technical writing, research collaboration.</p></div></div>
 </section>
 
 
@@ -313,7 +296,7 @@ gtag("config", "G-9RK674J2KF");
 <section id="contact">
 
   <h2 class="contact-headline reveal">
-    Let’s build<span>something.</span>
+    Let’s make<span>it happen.</span>
   </h2>
   <a href="mailto:cvinaykumaar@gmail.com" class="contact-email reveal">
     cvinaykumaar@gmail.com
@@ -340,7 +323,7 @@ gtag("config", "G-9RK674J2KF");
 </main>
 <!-- ─── FOOTER ─── -->
 <footer>
-  <p class="footer-text">Vinay Kumar Chakali<br>Software Engineer</p>
+  <p class="footer-text">Vinay Kumar Chakali<br>AI/ML Engineer</p>
   <a href="#" class="scroll-top" aria-label="Back to top">↑</a>
 </footer>
 
@@ -348,19 +331,8 @@ gtag("config", "G-9RK674J2KF");
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
-<script>
-// The navigation and all content work before scripts or remote libraries load.
-(() => {
- const hamburger=document.getElementById('hamburger');
- const menu=document.getElementById('mobileMenu');
- hamburger.setAttribute('aria-controls','mobileMenu');
- hamburger.setAttribute('aria-expanded','false');
- const close=()=>{menu.classList.remove('open');hamburger.setAttribute('aria-expanded','false');};
- hamburger.addEventListener('click',()=>{const open=hamburger.getAttribute('aria-expanded')!=='true';menu.classList.toggle('open',open);hamburger.setAttribute('aria-expanded',String(open));});
- menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
- document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
-})();
-</script>
+<script src="./aeos.js?v=2" defer></script>
 <script src="./explorer.js" defer></script>
+<script src="./cinema.js?v=28" defer></script>
 </body>
 </html>

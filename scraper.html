@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-<script src="./theme.js"></script>
+<script src="./theme.js?v=15"></script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-9RK674J2KF"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -13,164 +13,14 @@ gtag("config", "G-9RK674J2KF");
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Web Scraper Pipeline | Vinay Kumar</title>
-<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="./favicon.svg?v=6" rel="icon" type="image/svg+xml"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=DM+Mono:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
-<meta content="How Vinay Kumar built a Python data pipeline with BeautifulSoup, SQLite and a FastAPI REST API, including pagination, title search and structured error responses." name="description"/><style>/* Hallmark · shape: Long Document · genre: modern-minimal · theme: brand · redesign: full
- * paper: oklch(17% 0.008 250) · accent: oklch(82% 0.15 220) · display: Space Grotesk · body: Inter · hero: Banner · nav: project mast · footer: contact mast · signature: the five-stage book data pipeline
- * axes: dark/grotesk/cyan · posture: restrained · contrast: verify in render · fold: verify in render · v2.0.0 */
-/* Hallmark · pre-emit critique: P4 H4 E4 S4 R5 V4 · weakest: S, led with the project's real architecture rather than generic backend decoration */
-/* Hallmark · dropped emoji icons, .cs-label, .feat-num, .outcome-num, .future-dot · Floor gates 30a and 54 remove decorative icons and repeated numeric eyebrows; underlying content is retained */
-/* Hallmark · reworded long hero description to "From public web pages to a structured, searchable REST API." · gate 58 condenses the hero; all technical facts remain in the overview and architecture */
-/* Hallmark · waive 77 · Existing prose and five roadmap rows use a bounded technical reading measure · Full-width divider rules carry the section extent while short factual text remains concise rather than padded. */
-/* Hallmark · waive 8 · Redesign keeps the technical case-study sequence · Every implementation detail remains in its original narrative order for reviewers. */
-/* Hallmark · dismissed 59 · ten preserved scraper chapters separately explain the architecture, API, schema, outcomes and future work */
-/* Hallmark · answered F20 · the final scraper outcome spans both columns to avoid an isolated grid item */
-@import url('./tokens.css');
-@import url('./base.css');
-:root { --text-dim:var(--text-muted); --border-acc:var(--border); --grad-from:var(--accent); --grad-to:var(--accent); }
-.case-scraper { background:var(--bg); color:var(--text); font:400 16px/1.65 var(--font-body); }
-html, body { overflow-x:clip; }
-[hidden] { display:none!important; }
-a { color:inherit; text-decoration:none; }
-a:hover { color:var(--accent); }
-a:focus-visible, pre:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
-a:active { opacity:0.8; }
-h1,h2,h3 { font-family:var(--font-display); color:var(--text); font-weight:500; line-height:1.08; letter-spacing:-0.04em; min-width:0; overflow-wrap:break-word; text-wrap:balance; }
-h1 { font-size:clamp(48px,7vw,96px); }
-h2 { font-size:clamp(36px,4vw,56px); }
-h3 { font-size:24px; }
-p { margin:0; }
-.case-scraper nav { width:min(100%,1280px); margin-inline:auto; padding:var(--space-lg) var(--space-48); display:flex; gap:var(--space-32); align-items:center; justify-content:space-between; background:var(--bg); }
-.nav-back,.nav-right { display:flex; align-items:center; gap:var(--space-lg); font:400 14px/1.4 var(--font-body); }
-.nav-back { gap:var(--space-xs); min-height:48px; }
-.nav-back svg { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; }
-.nav-title { color:var(--text-muted); font-size:14px; }
-.nav-right a { display:inline-flex; align-items:center; min-height:48px; }
-.cs-hero { padding:var(--space-80) 0 var(--space-3xl); }
-.hero-content,.cs-wrap,.cs-wrap-wide,.cs-contact-inner,.cs-footer { width:min(100%,1280px); padding-inline:var(--space-48); margin-inline:auto; }
-.hero-content { max-width:1280px; }
-.cs-hero-title { max-width:15ch; margin:0 0 var(--space-lg); }
-.cs-hero-subtitle { max-width:65ch; color:var(--text-muted); font-size:20px; margin-bottom:var(--space-lg); }
-.cs-hero-tag { font-size:14px; color:var(--text-muted); margin-bottom:var(--space-32); }
-.case-primary { display:inline-flex; justify-content:center; align-items:center; min-height:48px; padding:var(--space-sm) var(--space-lg); border:1px solid var(--accent); border-radius:6px; background:var(--accent); color:var(--bg); font-weight:500; }
-.case-primary:hover { background:var(--text); border-color:var(--text); color:var(--bg); }
-.overview-band { padding:var(--space-2xl) 0 var(--space-80); background:var(--surface); color:var(--text); }
-.diagram-title { font-family:var(--font-display); font-size:32px; letter-spacing:-0.03em; margin-bottom:var(--space-xl); }
-.pipeline-diagram { display:grid; grid-template-columns:1fr auto 1fr auto 1fr auto 1fr auto 1fr; gap:var(--space-md); align-items:start; }
-.pipe-node { padding:var(--space-lg) 0; border-top:1px solid var(--border); }
-.pipe-label { font-family:var(--font-display); font-size:20px; color:var(--text); overflow-wrap:normal; }
-.pipe-arrow { padding-top:28px; font-size:14px; color:var(--text-muted); }
-.pipe-arrow-line { display:none; }
-.overview-meta { margin-top:var(--space-2xl); display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:var(--space-32); }
-.meta-cell { border-top:1px solid var(--border); padding-top:var(--space-md); }
-.meta-label { color:var(--text-muted); font-size:14px; margin-bottom:var(--space-xs); }
-.meta-value { font-size:16px; }
-.cs-section { padding:var(--space-120) 0; }
-.cs-heading { margin:0 0 var(--space-48); }
-.cs-body { max-width:65ch; font-size:16px; color:var(--text-muted); }
-.cs-body+.cs-body { margin-top:var(--space-lg); }
-strong { color:var(--text); font-weight:500; }
-.layers-diagram { margin-top:var(--space-48); }
-.overview-section .cs-wrap { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--gap-columns); }
-.overview-section .cs-heading,.overview-section .layers-diagram { grid-column:1/-1; }
-.overview-section .cs-body+.cs-body { margin-top:0; }
-.layer-row { display:grid; grid-template-columns:240px minmax(0,1fr); gap:var(--space-32); padding-block:var(--space-lg); border-top:1px solid var(--border); }
-.layer-name { font-size:14px; color:var(--text-muted); }
-.layer-desc { font-size:20px; }
-.layer-content { display:flex; align-items:center; flex-wrap:wrap; gap:var(--space-md); }
-.layer-chip { font-size:14px; color:var(--text); }
-.layer-explanation { flex-basis:100%; color:var(--text-muted); }
-.architecture-section { background:var(--surface); color:var(--text); }
-.architecture-step { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,2fr); gap:var(--space-32); padding-top:var(--space-xl); margin-top:var(--space-56); border-top:1px solid var(--border); }
-.architecture-step>h3 { margin:0; }
-.architecture-step>.cs-body { grid-column:2; }
-.architecture-step>.schema-block,.architecture-step>.endpoint-grid,.architecture-step>.code-block { grid-column:2; }
-.inline-code { font:400 14px/1.6 var(--font-mono); color:var(--text); overflow-wrap:anywhere; }
-.schema-block { margin-top:var(--space-xs); border-block:1px solid var(--border); padding-block:var(--space-lg); }
-.schema-block>p { font-size:14px; color:var(--text-muted); margin-bottom:var(--space-lg); }
-.schema-block>div>div:first-child { margin-bottom:var(--space-md); font-weight:500; }
-.schema-block>div>div:last-child>div { display:flex; gap:var(--space-md); padding-block:var(--space-xs); border-top:1px solid var(--border); }
-.schema-block span { font:400 14px/1.6 var(--font-mono); }
-.schema-block>div>div:last-child>div>span:last-child { margin-left:auto; color:var(--text-muted); }
-.endpoint-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--space-32); margin-top:var(--space-xs); }
-.endpoint { border-top:1px solid var(--border); padding-top:var(--space-lg); min-width:0; }
-.endpoint>div { display:flex; gap:var(--space-md); margin-bottom:var(--space-md); }
-.endpoint>div span { font:400 14px/1.6 var(--font-mono); overflow-wrap:anywhere; }
-.endpoint p { color:var(--text-muted); margin-top:var(--space-xs); }
-.endpoint p:last-child { font:400 14px/1.6 var(--font-mono); color:var(--text); }
-.code-block { background:var(--bg); color:var(--text); border:1px solid var(--border); border-radius:8px; margin-top:var(--space-md); min-width:0; }
-.code-header { border-bottom:1px solid var(--border); padding:var(--space-md) var(--space-lg); display:flex; flex-wrap:wrap; gap:var(--space-md); justify-content:space-between; font-size:14px; color:var(--text-muted); }
-.code-body { margin:0; padding:var(--space-lg); overflow-x:auto; white-space:pre; font:400 14px/1.8 var(--font-mono); color:var(--text); }
-.code-key,.code-num { color:var(--accent); }
-.code-str { color:var(--text); }
-.code-comment { color:var(--text-muted); }
-.file-tree { padding:var(--space-32); margin:var(--space-48) 0 0; border:1px solid var(--border); background:var(--surface); color:var(--text); border-radius:8px; overflow-x:auto; font:400 14px/1.8 var(--font-mono); white-space:pre; }
-.tree-comment { color:var(--text-muted); }
-.tree-dir { color:var(--accent); }
-.technology-section .cs-wrap { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,2fr); gap:var(--space-32); }
-.technology-section .cs-heading { grid-row:1/4; }
-.stack-group { grid-column:2; border-top:1px solid var(--border); padding-top:var(--space-lg); }
-.stack-group-label { font-size:20px; margin-bottom:var(--space-md); }
-.stack-pills { display:flex; flex-wrap:wrap; gap:var(--space-md); color:var(--text-muted); }
-.stack-pill { font-size:16px; }
-.features-section>.cs-wrap-wide>.cs-wrap { padding:0; }
-.features-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--space-32); }
-.feat-card { padding-block:var(--space-32); border-top:1px solid var(--border); }
-.feat-title { margin:0 0 var(--space-md); }
-.feat-body { color:var(--text-muted); font-size:16px; max-width:65ch; }
-.outcomes-list > :last-child:nth-child(odd) { grid-column:1 / -1; }
-.outcomes-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--space-32); }
-.outcome-item { border-top:1px solid var(--border); padding-top:var(--space-lg); }
-.outcome-text { font-size:16px; color:var(--text-muted); }
-.future-list { display:grid; grid-template-columns:minmax(0,1fr); border-bottom:1px solid var(--border); }
-.future-item { padding:var(--space-lg) 0; border-top:1px solid var(--border); }
-.future-text { color:var(--text-muted); }
-.cs-divider { height:1px; background:var(--border); }
-.cs-footer { padding-block:var(--space-32); border-top:1px solid var(--border); }
-.cs-footer-text { font-size:14px; color:var(--text-muted); }
-.cs-contact-section { background:var(--surface); color:var(--text); padding:var(--space-3xl) 0; }
-.cs-contact-heading { margin:0 0 var(--space-xl); }
-.cs-contact-row { display:flex; justify-content:space-between; align-items:center; gap:var(--space-32); flex-wrap:wrap; }
-.cs-email-pill { font-size:clamp(18px,3vw,32px); min-height:48px; overflow-wrap:anywhere; text-decoration:underline; text-underline-offset:8px; }
-.cs-social-icons { display:flex; gap:var(--space-md); }
-.cs-social-icons a { min-width:48px; min-height:48px; display:inline-flex; justify-content:center; align-items:center; }
-.cs-resume-link { display:inline-flex; align-items:center; gap:var(--space-xs); min-height:48px; margin-top:var(--space-lg); text-decoration:underline; text-underline-offset:4px; }
-.reveal { opacity:1; transform:none; }
-@media(max-width:900px) {
- .case-scraper nav,.hero-content,.cs-wrap,.cs-wrap-wide,.cs-contact-inner,.cs-footer { padding-inline:var(--space-lg); }
- .nav-title { display:none; }
- .pipeline-diagram { grid-template-columns:minmax(0,1fr); gap:0; }
- .pipe-node { padding:var(--space-20) 0; }
- .pipe-arrow { padding:0 0 var(--space-20); }
- .overview-meta { grid-template-columns:repeat(2,minmax(0,1fr)); }
- .cs-hero { padding:var(--space-48) 0 var(--space-2xl); }
- .cs-hero-title { font-size:clamp(48px,9vw,80px); }
- .cs-section { padding:var(--space-80) 0; }
- .architecture-step { grid-template-columns:minmax(0,1fr); gap:var(--space-lg); }
- .architecture-step>.cs-body,.architecture-step>.schema-block,.architecture-step>.endpoint-grid,.architecture-step>.code-block { grid-column:1; }
- .technology-section .cs-wrap,.overview-section .cs-wrap { display:block; }
- .overview-section .cs-body+.cs-body { margin-top:var(--space-lg); }
- .stack-group { margin-top:var(--space-32); }
- .layer-row { grid-template-columns:minmax(0,1fr); gap:var(--space-md); }
- .features-grid,.outcomes-list { grid-template-columns:minmax(0,1fr); }
-}
-@media(max-width:520px) {
- .nav-right { gap:var(--space-md); }
- .nav-right a:last-child { display:none; }
- .endpoint-grid { grid-template-columns:minmax(0,1fr); }
- .cs-hero-title { font-size:48px; }
- .cs-hero-subtitle { font-size:18px; }
- .overview-meta { grid-template-columns:minmax(0,1fr); }
- .code-header,.code-body,.file-tree { padding:var(--space-md); }
- .cs-social-icons { gap:var(--space-xs); }
-}
-@media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation:none!important; transition:none!important; } }
-</style><link href="./portfolio.css" rel="stylesheet"/></head>
-<body class="case-scraper">
-<!-- NAV -->
-<nav>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<meta content="How Vinay Kumar built a Python data pipeline with BeautifulSoup, SQLite and a FastAPI REST API, including pagination, title search and structured error responses." name="description"/>
+<link rel="stylesheet" href="./stripe.css?v=19"/>
+<link rel="stylesheet" href="./case-walkthrough.css?v=21"/></head>
+<body class="case-study visual-walkthrough case-scraper"><nav>
 <a class="nav-back" href="./index.html">
 <svg aria-hidden="true" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>Back to portfolio</a>
 <span class="nav-title">Web Scraper Pipeline: Case Study</span>
@@ -179,15 +29,7 @@ strong { color:var(--text); font-weight:500; }
 <a href="./index.html#work">All work</a>
 </div>
 <button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch to light theme" aria-pressed="false"><svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></svg><svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20.5 14a8.5 8.5 0 0 1-10.5-10.5A8.5 8.5 0 1 0 20.5 14Z"/></svg></button>
-</nav>
-<!-- HERO -->
-<header class="cs-hero">
-<div class="hero-content">
-<h1 class="cs-hero-title">Web Scraper Data Pipeline</h1>
-<p class="cs-hero-subtitle">From public web pages to a structured, searchable REST API.</p>
-<p class="cs-hero-tag">Backend engineering case study</p>
-<a class="case-primary" href="https://github.com/VinnayKummar/webscraper" rel="noopener" target="_blank">Explore the code</a></div>
-</header>
+</nav><header class="cs-hero walkthrough-hero"><h1 class="cs-hero-title">Web Scraper Pipeline</h1><p class="cs-hero-subtitle">How a page of books becomes clean information another app can search.</p><a class="hero-action" href="#walkthrough">Follow the walkthrough</a></header><main class="visual-case"><section class="story-context"><p>The starting point</p><h2>A web page is easy to read, but hard for another app to use.</h2><p>This project separates book information from the surrounding page, saves it in an organized form, and lets other software ask for exactly what it needs.</p><div class="story-route"><span>The problem</span><i aria-hidden="true"></i><span>The process</span><i aria-hidden="true"></i><span>The result</span></div></section><section class="journey-overview" aria-labelledby="journey-title"><h2 id="journey-title">The whole idea, at a glance.</h2><ol class="journey-track"><li><span>01</span><strong>Read the book website</strong></li><li><span>02</span><strong>Keep the useful details</strong></li><li><span>03</span><strong>Save the information</strong></li><li><span>04</span><strong>Ask for books</strong></li><li><span>05</span><strong>Return a clear response</strong></li></ol><p>Follow the steps below. No technical background needed.</p></section><section id="walkthrough" class="walkthrough" data-walkthrough aria-label="Step-by-step walkthrough"><nav class="step-navigation" aria-label="Walkthrough steps"><a class="step-link" href="#step-1"><span>01</span>Read the book website</a><a class="step-link" href="#step-2"><span>02</span>Keep the useful details</a><a class="step-link" href="#step-3"><span>03</span>Save the information</a><a class="step-link" href="#step-4"><span>04</span>Ask for books</a><a class="step-link" href="#step-5"><span>05</span>Return a clear response</a></nav><div class="walkthrough-panels"><article class="walkthrough-step" id="step-1" data-walkthrough-step aria-labelledby="step-title-1"><div class="step-explanation"><p class="step-count">Step 1 of 5</p><h2 id="step-title-1">Read the book website</h2><p class="step-intro">The program downloads a public page from Books to Scrape, a website built for scraping practice.</p><p>A person sees pictures, titles, and prices. The program receives the underlying page content so it can pick out the useful information.</p><details class="step-technical"><summary>What happens behind the scenes</summary><p>Python Requests fetches the page. This walkthrough describes the backend; there is no separate product screenshot.</p></details></div><div class="step-visual"><figure class="explanation-scene" data-explanation-scene><div class="scene-top"><span>An illustrated example</span><button type="button" data-scene-play hidden aria-pressed="false">Play explanation</button></div><div class="scene-frames"><div class="scene-frame" data-scene-frame><div class="scene-objects scene-scraper"><div class="topic-motion record-motion" aria-hidden="true"><span>Title</span><span>Price</span><i></i><i></i><i></i><i></i></div><div class="motion-item"><span class="motion-index">01</span><strong>Books to Scrape</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Book listings</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Public source</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 1 of 3</span><h3>Start with a public website</h3><p>Books to Scrape provides practice book listings.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-scraper"><div class="topic-motion record-motion" aria-hidden="true"><span>Title</span><span>Price</span><i></i><i></i><i></i><i></i></div><div class="motion-item"><span class="motion-index">01</span><strong>Page address</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Download request</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Page content</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 2 of 3</span><h3>Download the page content</h3><p>Python requests the content rather than manually copying it.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-scraper"><div class="topic-motion record-motion" aria-hidden="true"><span>Title</span><span>Price</span><i></i><i></i><i></i><i></i></div><div class="motion-item"><span class="motion-index">01</span><strong>Page content</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Find book entries</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Next: extract details</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 3 of 3</span><h3>Pass the content forward</h3><p>The next stage decides which details to keep.</p></div></div></div><div class="scene-controls" hidden><button type="button" data-scene-prev aria-label="Previous moment">‹</button><div class="scene-dots" aria-label="Explanation moments"><button type="button" data-scene-dot aria-label="Show moment 1">1</button><button type="button" data-scene-dot aria-label="Show moment 2">2</button><button type="button" data-scene-dot aria-label="Show moment 3">3</button></div><button type="button" data-scene-next aria-label="Next moment">›</button></div><figcaption>Illustration of the workflow, not a live app or a product screenshot.</figcaption></figure></div></article><article class="walkthrough-step" id="step-2" data-walkthrough-step aria-labelledby="step-title-2"><div class="step-explanation"><p class="step-count">Step 2 of 5</p><h2 id="step-title-2">Keep the useful details</h2><p class="step-intro">The scraper pulls each book’s title and price out of the page.</p><p>Think of it like copying only the columns you need from a busy document. BeautifulSoup helps find the right pieces, leaving navigation and unrelated page content behind.</p><details class="step-technical"><summary>What happens behind the scenes</summary><p>The scraper parses the page’s book entries and passes the extracted records to the database layer.</p></details></div><div class="step-visual"><figure class="explanation-scene" data-explanation-scene><div class="scene-top"><span>An illustrated example</span><button type="button" data-scene-play hidden aria-pressed="false">Play explanation</button></div><div class="scene-frames"><div class="scene-frame" data-scene-frame><div class="scene-objects scene-scraper"><div class="topic-motion record-motion" aria-hidden="true"><span>Title</span><span>Price</span><i></i><i></i><i></i><i></i></div><div class="motion-item"><span class="motion-index">01</span><strong>Page content</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Book entry</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Relevant information</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 1 of 3</span><h3>Find each book entry</h3><p>The parser looks for book records inside the page.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-scraper"><div class="topic-motion record-motion" aria-hidden="true"><span>Title</span><span>Price</span><i></i><i></i><i></i><i></i></div><div class="motion-item"><span class="motion-index">01</span><strong>Book title</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Book price</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Keep these fields</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 2 of 3</span><h3>Pick title and price</h3><p>Ignore navigation and unrelated text around the book.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-scraper"><div class="topic-motion record-motion" aria-hidden="true"><span>Title</span><span>Price</span><i></i><i></i><i></i><i></i></div><div class="motion-item"><span class="motion-index">01</span><strong>title: example book</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>price: example value</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Illustrative record</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 3 of 3</span><h3>Create a clean record</h3><p>Every entry follows the same simple structure.</p></div></div></div><div class="scene-controls" hidden><button type="button" data-scene-prev aria-label="Previous moment">‹</button><div class="scene-dots" aria-label="Explanation moments"><button type="button" data-scene-dot aria-label="Show moment 1">1</button><button type="button" data-scene-dot aria-label="Show moment 2">2</button><button type="button" data-scene-dot aria-label="Show moment 3">3</button></div><button type="button" data-scene-next aria-label="Next moment">›</button></div><figcaption>Illustration of the workflow, not a live app or a product screenshot.</figcaption></figure></div></article><article class="walkthrough-step" id="step-3" data-walkthrough-step aria-labelledby="step-title-3"><div class="step-explanation"><p class="step-count">Step 3 of 5</p><h2 id="step-title-3">Save the information</h2><p class="step-intro">The records go into a small database so the next request does not need to read the website again.</p><p>Each saved record has an identifier, a title, and a price. The database is the organized shelf between collection and delivery. Duplicate prevention is a future improvement, not a feature claimed here.</p><details class="step-technical"><summary>What happens behind the scenes</summary><p>SQLite stores the records; the project separates scraper.py, db.py, and app.py responsibilities.</p></details></div><div class="step-visual"><figure class="explanation-scene" data-explanation-scene><div class="scene-top"><span>An illustrated example</span><button type="button" data-scene-play hidden aria-pressed="false">Play explanation</button></div><div class="scene-frames"><div class="scene-frame" data-scene-frame><div class="scene-objects scene-scraper"><div class="topic-motion record-motion" aria-hidden="true"><span>Title</span><span>Price</span><i></i><i></i><i></i><i></i></div><div class="motion-item"><span class="motion-index">01</span><strong>Book details</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Database connection</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Save records</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 1 of 3</span><h3>Receive the extracted records</h3><p>The database layer accepts the book details.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-scraper"><div class="topic-motion record-motion" aria-hidden="true"><span>Title</span><span>Price</span><i></i><i></i><i></i><i></i></div><div class="motion-item"><span class="motion-index">01</span><strong>Identifier</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Title</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Price</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 2 of 3</span><h3>Organize the fields</h3><p>Each record stores an identifier, title, and price.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-scraper"><div class="topic-motion record-motion" aria-hidden="true"><span>Title</span><span>Price</span><i></i><i></i><i></i><i></i></div><div class="motion-item"><span class="motion-index">01</span><strong>SQLite storage</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Saved records</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Ready for a request</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 3 of 3</span><h3>Keep data ready to retrieve</h3><p>A later request can use the saved information.</p></div></div></div><div class="scene-controls" hidden><button type="button" data-scene-prev aria-label="Previous moment">‹</button><div class="scene-dots" aria-label="Explanation moments"><button type="button" data-scene-dot aria-label="Show moment 1">1</button><button type="button" data-scene-dot aria-label="Show moment 2">2</button><button type="button" data-scene-dot aria-label="Show moment 3">3</button></div><button type="button" data-scene-next aria-label="Next moment">›</button></div><figcaption>Illustration of the workflow, not a live app or a product screenshot.</figcaption></figure></div></article><article class="walkthrough-step" id="step-4" data-walkthrough-step aria-labelledby="step-title-4"><div class="step-explanation"><p class="step-count">Step 4 of 5</p><h2 id="step-title-4">Ask for books</h2><p class="step-intro">Another application asks the backend for a page of books or searches by a word in the title.</p><p>An API is simply a way for programs to ask each other for information. Pagination returns a manageable page of results; search narrows the list to matching titles.</p><details class="step-technical"><summary>What happens behind the scenes</summary><p>The existing endpoints are /books?page=1&limit=10 and /books/search?title=travel. These are explanatory examples, not live calls from this page.</p></details></div><div class="step-visual"><figure class="explanation-scene" data-explanation-scene><div class="scene-top"><span>An illustrated example</span><button type="button" data-scene-play hidden aria-pressed="false">Play explanation</button></div><div class="scene-frames"><div class="scene-frame" data-scene-frame><div class="scene-objects scene-scraper"><div class="topic-motion record-motion" aria-hidden="true"><span>Title</span><span>Price</span><i></i><i></i><i></i><i></i></div><div class="motion-item"><span class="motion-index">01</span><strong>List books</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Search a title</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Choose request</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 1 of 3</span><h3>Choose what to ask for</h3><p>Request a page of books, or a title search.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-scraper"><div class="topic-motion record-motion" aria-hidden="true"><span>Title</span><span>Price</span><i></i><i></i><i></i><i></i></div><div class="motion-item"><span class="motion-index">01</span><strong>Search: travel</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>API receives request</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Look up matching titles</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 2 of 3</span><h3>Send the request</h3><p>The API receives the request and asks the database.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-scraper"><div class="topic-motion record-motion" aria-hidden="true"><span>Title</span><span>Price</span><i></i><i></i><i></i><i></i></div><div class="motion-item"><span class="motion-index">01</span><strong>Requested page</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Matching records</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Next: return results</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 3 of 3</span><h3>Return a manageable set</h3><p>Pagination limits the amount of information returned at once.</p></div></div></div><div class="scene-controls" hidden><button type="button" data-scene-prev aria-label="Previous moment">‹</button><div class="scene-dots" aria-label="Explanation moments"><button type="button" data-scene-dot aria-label="Show moment 1">1</button><button type="button" data-scene-dot aria-label="Show moment 2">2</button><button type="button" data-scene-dot aria-label="Show moment 3">3</button></div><button type="button" data-scene-next aria-label="Next moment">›</button></div><figcaption>Illustration of the workflow, not a live app or a product screenshot.</figcaption></figure></div></article><article class="walkthrough-step" id="step-5" data-walkthrough-step aria-labelledby="step-title-5"><div class="step-explanation"><p class="step-count">Step 5 of 5</p><h2 id="step-title-5">Return a clear response</h2><p class="step-intro">The backend sends the results in a predictable format that a website or another program can use.</p><p>Instead of sending the whole web page, it sends named fields such as title and price. FastAPI provides browsable documentation, while structured error responses explain when a request fails.</p><details class="step-technical"><summary>What happens behind the scenes</summary><p>FastAPI serves JSON, a common format for exchanging data. The original source includes response metadata and validation.</p></details></div><div class="step-visual"><figure class="explanation-scene" data-explanation-scene><div class="scene-top"><span>An illustrated example</span><button type="button" data-scene-play hidden aria-pressed="false">Play explanation</button></div><div class="scene-frames"><div class="scene-frame" data-scene-frame><div class="scene-objects scene-scraper"><div class="topic-motion record-motion" aria-hidden="true"><span>Title</span><span>Price</span><i></i><i></i><i></i><i></i></div><div class="motion-item"><span class="motion-index">01</span><strong>Saved book list</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Requested records</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Prepare response</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 1 of 3</span><h3>Collect the matching records</h3><p>Only the requested information is prepared for delivery.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-scraper"><div class="topic-motion record-motion" aria-hidden="true"><span>Title</span><span>Price</span><i></i><i></i><i></i><i></i></div><div class="motion-item"><span class="motion-index">01</span><strong>Title field</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Price field</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Structured response</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 2 of 3</span><h3>Use named fields</h3><p>JSON labels the information so another program can read it.</p></div></div><div class="scene-frame" data-scene-frame><div class="scene-objects scene-scraper"><div class="topic-motion record-motion" aria-hidden="true"><span>Title</span><span>Price</span><i></i><i></i><i></i><i></i></div><div class="motion-item"><span class="motion-index">01</span><strong>API response</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">02</span><strong>Another app</strong><span class="motion-check" aria-hidden="true">✓</span></div><div class="motion-item"><span class="motion-index">03</span><strong>Data ready to use</strong><span class="motion-check" aria-hidden="true">✓</span></div></div><div class="scene-narration"><span>Moment 3 of 3</span><h3>Deliver the response</h3><p>A client can use the result; structured errors explain failures.</p></div></div></div><div class="scene-controls" hidden><button type="button" data-scene-prev aria-label="Previous moment">‹</button><div class="scene-dots" aria-label="Explanation moments"><button type="button" data-scene-dot aria-label="Show moment 1">1</button><button type="button" data-scene-dot aria-label="Show moment 2">2</button><button type="button" data-scene-dot aria-label="Show moment 3">3</button></div><button type="button" data-scene-next aria-label="Next moment">›</button></div><figcaption>Illustration of the workflow, not a live app or a product screenshot.</figcaption></figure></div></article></div><div class="walkthrough-controls" hidden><button type="button" data-step-prev>Previous step</button><p data-step-progress role="status" aria-live="polite"></p><button type="button" data-step-next>Next step <span aria-hidden="true">›</span></button></div></section><section class="story-conclusion" id="result"><p>The result</p><h2>A busy web page becomes useful, searchable information.</h2><p>Collect the page once, extract book details, save the records, and return the requested results. Each part has one clear job.</p><div class="result-chain"><span>Web page</span><span>Book records</span><span>Database</span><span>Searchable response</span></div><a href="#walkthrough" class="story-restart">Walk through it again <span aria-hidden="true">↺</span></a></section><details class="engineering-appendix"><summary>Explore the full engineering notes</summary><div class="appendix-content">
 <!-- OVERVIEW -->
 <section class="overview-band">
 <div class="cs-wrap-wide">
@@ -200,7 +42,7 @@ strong { color:var(--text); font-weight:500; }
 </div>
 <div class="pipe-arrow">
 <div class="pipe-arrow-line"></div>
-<div class="pipe-arrow-text">HTTP GET</div>
+<code class="pipe-arrow-text">HTTP GET</code>
 </div>
 <div class="pipe-node" role="listitem">
 <div class="pipe-label">Python Scraper</div>
@@ -336,19 +178,19 @@ strong { color:var(--text); font-weight:500; }
 </div>
 <div>
 <div>
-<span>PK</span>
+<code>PK</code>
 <span>id</span>
-<span>INTEGER</span>
+<code>INTEGER</code>
 </div>
 <div>
 <span></span>
 <span>title</span>
-<span>TEXT</span>
+<code>TEXT</code>
 </div>
 <div>
 <span></span>
 <span>price</span>
-<span>REAL</span>
+<code>REAL</code>
 </div>
 </div>
 </div>
@@ -541,7 +383,7 @@ strong { color:var(--text); font-weight:500; }
 </div>
 </section>
 <!-- FOOTER -->
-<footer class="cs-footer">
+</div></details><nav class="next-case" aria-label="More case studies"><p>Explore another build</p><a href="./applypilot.html">AI Job Application Agent</a><a href="./polish.html">Polish</a><a href="./scraper.html">Web Scraper Pipeline</a></nav></main><footer class="cs-footer">
 <p class="cs-footer-text">Vinay Kumar / Web Scraper Pipeline / Backend Engineering</p>
 </footer>
 <!-- ─── GET IN TOUCH ─── -->
@@ -571,12 +413,4 @@ strong { color:var(--text); font-weight:500; }
     </a>
 </div>
 </section>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script>(function () {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !window.gsap) return;
-  // One restrained entrance; all content is readable before this enhancement runs.
-  gsap.fromTo('.cs-hero-title', { y: 8 }, { y: 0, duration: 0.45, ease: 'power2.out' });
-})();</script>
-</body>
-</html>
+<script src="./cinema.js?v=28" defer></script><script src="./case-walkthrough.js?v=21" defer></script></body></html>
